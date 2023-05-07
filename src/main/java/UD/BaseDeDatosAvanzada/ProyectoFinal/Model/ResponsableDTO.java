@@ -9,7 +9,7 @@ public class ResponsableDTO {
     @Column
     private long identificacion;
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,targetEntity = UsuarioDTO.class)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     private UsuarioDTO usuario;
 

@@ -15,7 +15,7 @@ public class AgenciaDTO {
 
     @Column
     private String nombre_agencia;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,targetEntity = MunicipioDTO.class)
     @JoinColumn(name = "id_municipio", referencedColumnName = "id_municipio")
     private MunicipioDTO municipio;
     public AgenciaDTO() {

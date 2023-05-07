@@ -6,10 +6,9 @@ import jakarta.persistence.*;
 @Table(name = "telefono_usuario")
 public class Telefono_UsuarioDTO {
     @Id
-    @Column
     private long telefono;
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,targetEntity = UsuarioDTO.class)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     private UsuarioDTO usuario;
     public Telefono_UsuarioDTO() {
@@ -23,5 +22,11 @@ public class Telefono_UsuarioDTO {
     }
     public void setTelefono(long telefono) {
         this.telefono = telefono;
+    }
+    public UsuarioDTO getUsuario() {
+        return this.usuario;
+    }
+    public void setUsuario(UsuarioDTO usuario) {
+        this.usuario = usuario;
     }
 }
