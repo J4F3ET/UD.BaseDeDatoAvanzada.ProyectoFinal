@@ -3,7 +3,7 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "municipio")
 public class MunicipioDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
