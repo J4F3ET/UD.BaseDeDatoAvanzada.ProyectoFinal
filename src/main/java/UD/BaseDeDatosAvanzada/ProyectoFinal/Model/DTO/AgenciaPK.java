@@ -3,28 +3,30 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 import jakarta.persistence.*    ;
 import java.io.Serializable;
 import java.util.Objects;
-
+/**
+ * Clase que representa a la clave primaria de la tabla agencia
+ */
 @Embeddable
 public class AgenciaPK implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Column(name = "rnt")
-    private long rnt;
+    @Column(name = "rnt_agencia")
+    private int rnt;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     private UsuarioDTO usuario;
 
     public AgenciaPK() {
     }
-    public AgenciaPK(long rnt, UsuarioDTO usuario) {
+    public AgenciaPK(int rnt, UsuarioDTO usuario) {
         this.rnt = rnt;
         this.usuario = usuario;
     }
 
-    public long getRnt() {
+    public int getRnt() {
         return rnt;
     }
 
-    public void setRnt(long rnt) {
+    public void setRnt(int rnt) {
         this.rnt = rnt;
     }
 

@@ -6,15 +6,17 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-
+/**
+ * Clase que representa la tabla Hotel de la base de datos.
+ */
 @Entity
 @Table(name = "hotel")
 public class HotelDTO {
     @Id
-    private long rnt_hotel;
-    @Column
+    private int rnt_hotel;
+    @Column(length = 50)
     private String nombre;
-    @Column
+    @Column(length = 50)
     private String direccion;
     @Column
     private Date anio_inauguracion;
@@ -22,14 +24,14 @@ public class HotelDTO {
     private float categoria;
 
     private int antiguedad;
-    @OneToMany(mappedBy = "hotel",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<HabitacionDTO> habitaciones = new ArrayList<HabitacionDTO>();
-    @OneToMany(mappedBy = "hotel",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "hotel_telefonoPK.hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Hotel_TelefonoDTO> telefonos = new ArrayList<Hotel_TelefonoDTO>();
 
     public HotelDTO() {
     }
-    public HotelDTO(long rnt_hotel, String nombre, String direccion, Date anio_inauguracion, float categoria) {
+    public HotelDTO(int rnt_hotel, String nombre, String direccion, Date anio_inauguracion, float categoria) {
         this.rnt_hotel = rnt_hotel;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -43,7 +45,7 @@ public class HotelDTO {
         return rnt_hotel;
     }
 
-    public void setRnt_hotel(long rnt_hotel) {
+    public void setRnt_hotel(int rnt_hotel) {
         this.rnt_hotel = rnt_hotel;
     }
 

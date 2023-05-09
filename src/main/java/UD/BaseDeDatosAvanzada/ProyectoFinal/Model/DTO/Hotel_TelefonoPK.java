@@ -4,9 +4,12 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-
+/**
+ * Esta clase representa a la clave primaria de la tabla hotel_telefono
+ */
 @Embeddable
 public class Hotel_TelefonoPK implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Column(name = "telefono")
     private long telefono;
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = HotelDTO.class)

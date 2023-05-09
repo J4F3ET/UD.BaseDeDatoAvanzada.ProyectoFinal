@@ -5,29 +5,32 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Clase que representa la llave primaria de la tabla Tipo_Habitacion_Reserva de la base de datos.
+ */
 @Embeddable
 public class Tipo_Habitacion_ReservaPK  implements Serializable {
     private static final long serialVersionUID = 1L;
     @Column(name = "tipo_habitacion")
-    private long tipo_habitacion;
+    private short tipo_habitacion;
 
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = ReservaDTO.class)
-    @JoinColumn(name = "id_reserva", referencedColumnName = "id_ureserva")
+    @JoinColumn(name = "id_reserva", referencedColumnName = "id_reserva")
     private ReservaDTO id_reserva;
 
     public Tipo_Habitacion_ReservaPK() {
     }
 
-    public Tipo_Habitacion_ReservaPK(long tipo_habitacion, ReservaDTO id_reserva) {
+    public Tipo_Habitacion_ReservaPK(short tipo_habitacion, ReservaDTO id_reserva) {
         this.tipo_habitacion = tipo_habitacion;
         this.id_reserva = id_reserva;
     }
 
-    public long getTipo_habitacion() {
+    public short getTipo_habitacion() {
         return tipo_habitacion;
     }
 
-    public void setTipo_habitacion(long tipo_habitacion) {
+    public void setTipo_habitacion(short tipo_habitacion) {
         this.tipo_habitacion = tipo_habitacion;
     }
 

@@ -1,7 +1,9 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
-
+/**
+ * Clase que define los atributos para el objeto Tipo_Habitacion_ReservaDTO.
+ */
 @Entity
 @Table(name = "tipo_habitacion_reserva")
 public class Tipo_Habitacion_ReservaDTO {

@@ -3,7 +3,9 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 import jakarta.persistence.*;
 
 import java.util.Objects;
-
+/**
+ * Clase que representa la tabla usar de la base de datos..
+ */
 @Entity
 @Table(name= "usar")
 public class UsarDTO {

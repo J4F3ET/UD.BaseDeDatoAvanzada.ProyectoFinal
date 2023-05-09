@@ -2,7 +2,9 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
-
+/**
+ * Clase que representa la tabla Usuario de la base de datos.
+ */
 @Entity
 @Table(name = "usuario")
 public class UsuarioDTO {
@@ -20,7 +22,7 @@ public class UsuarioDTO {
     @Column
     private String alias;
     private String rol;
-    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "telefono_usuarioPK.usuario",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Telefono_UsuarioDTO> telefonos = new ArrayList<>();
     public UsuarioDTO() {
     }

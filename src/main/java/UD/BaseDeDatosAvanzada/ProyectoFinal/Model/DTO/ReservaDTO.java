@@ -2,28 +2,31 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Objects;
-
+/**
+ * Clase que representa la tabla Reserva de la base de datos.
+ */
 @Entity
 @Table(name = "reserva")
 public class ReservaDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_reserva;
+    private int id_reserva;
     @Column
-    private Date fecha_inicio;
+    private Timestamp fecha_inicio;
     @Column
-    private Date fecha_final;
+    private Timestamp fecha_final;
     @Column
     private double valor_total_pagar;
     @Column
     private double valor_min_pagar;
     @Column
-    private int cant_personas;
+    private short cant_personas;
     @Column
-    private int cant_habitaciones;
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = ResponsableDTO.class)
+    private short cant_habitaciones;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "identificacion", referencedColumnName = "identificacion"),
             @JoinColumn(name = "id_usuario_responsable", referencedColumnName = "id_usuario")
@@ -38,21 +41,26 @@ public class ReservaDTO {
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = HotelDTO.class)
     @JoinColumn(name = "rnt_hotel", referencedColumnName = "rnt_hotel")
     private HotelDTO hotel;
-
+    @OneToMany(mappedBy = "id.id_reserva", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ArrayList<Tipo_Habitacion_ReservaDTO> tipo_habitacion_reserva = new ArrayList<>();
+    @OneToMany(mappedBy = "reserva", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ArrayList<RegistroDTO> reserva_registros = new ArrayList<>();
+    @OneToMany(mappedBy = "id.reservaDTO", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ArrayList<UsarDTO> reserva_servicio = new ArrayList<>();
     public ReservaDTO() {
     }
 
-    public ReservaDTO(long id_reserva,
-                      Date fecha_inicio,
-                      Date fecha_final,
+    public ReservaDTO(int id_reserva,
+                      Timestamp fecha_inicio,
+                      Timestamp fecha_final,
                       double valor_total_pagar,
                       double valor_min_pagar,
-                      int cant_personas,
-                      int cant_habitaciones,
+                      short cant_personas,
+                      short cant_habitaciones,
                       ResponsableDTO responsable,
                       AgenciaDTO agencia,
                       HotelDTO hotel
-    )
+                       )
     {
         this.id_reserva = id_reserva;
         this.fecha_inicio = fecha_inicio;
@@ -66,27 +74,27 @@ public class ReservaDTO {
         this.hotel = hotel;
     }
 
-    public long getId_reserva() {
+    public int getId_reserva() {
         return id_reserva;
     }
 
-    public void setId_reserva(long id_reserva) {
+    public void setId_reserva(int id_reserva) {
         this.id_reserva = id_reserva;
     }
 
-    public Date getFecha_inicio() {
+    public Timestamp getFecha_inicio() {
         return fecha_inicio;
     }
 
-    public void setFecha_inicio(Date fecha_inicio) {
+    public void setFecha_inicio(Timestamp fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public Date getFecha_final() {
+    public Timestamp getFecha_final() {
         return fecha_final;
     }
 
-    public void setFecha_final(Date fecha_final) {
+    public void setFecha_final(Timestamp fecha_final) {
         this.fecha_final = fecha_final;
     }
 
@@ -106,19 +114,19 @@ public class ReservaDTO {
         this.valor_min_pagar = valor_min_pagar;
     }
 
-    public int getCant_personas() {
+    public short getCant_personas() {
         return cant_personas;
     }
 
-    public void setCant_personas(int cant_personas) {
+    public void setCant_personas(short cant_personas) {
         this.cant_personas = cant_personas;
     }
 
-    public int getCant_habitaciones() {
+    public short getCant_habitaciones() {
         return cant_habitaciones;
     }
 
-    public void setCant_habitaciones(int cant_habitaciones) {
+    public void setCant_habitaciones(short cant_habitaciones) {
         this.cant_habitaciones = cant_habitaciones;
     }
 

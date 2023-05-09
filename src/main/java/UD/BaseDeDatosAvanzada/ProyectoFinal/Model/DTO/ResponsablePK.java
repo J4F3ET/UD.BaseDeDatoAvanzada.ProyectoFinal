@@ -3,7 +3,9 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-
+/**
+ * Clase que representa la llave primaria de la tabla Responsable de la base de datos.
+ */
 @Embeddable
 public class ResponsablePK implements Serializable {
     private static final long serialVersionUID = 1L;

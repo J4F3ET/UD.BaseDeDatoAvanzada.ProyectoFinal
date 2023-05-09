@@ -1,17 +1,19 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
-
+/**
+ * Clase que representa los atributos la tabla ServicioDTO de la base de datos.
+ */
 @Entity
 @Table(name = "servicio")
 public class ServicioDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_servicio;
-    @Column
+    private int id_servicio;
+    @Column(length = 50)
     private String nombre;
     @Column
-    private int costo;
+    private double costo;
 
     public ServicioDTO() {
     }
@@ -19,22 +21,22 @@ public class ServicioDTO {
         this.nombre = nombre;
         this.costo = costo;
     }
-    public long getId_servicio() {
+    public int getId_servicio() {
         return id_servicio;
     }
     public String getNombre() {
         return this.nombre;
     }
-    public int getCosto() {
+    public double getCosto() {
         return this.costo;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public void setCosto(int costo) {
+    public void setCosto(double costo) {
         this.costo = costo;
     }
-    public void setId_servicio(long id_servicio) {
+    public void setId_servicio(int id_servicio) {
         this.id_servicio = id_servicio;
     }
 

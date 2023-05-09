@@ -2,23 +2,31 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+
+/**
+ * Clase que representa los atributos la tabla MunicipioDTO de la base de datos.
+ */
 @Entity
 @Table(name = "municipio")
 public class MunicipioDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_municipio;
+    private int id_municipio;
 
-    @Column
+    @Column(length = 50)
     private String nombre;
+
+    @OneToMany(mappedBy = "municipio", fetch = FetchType.LAZY, targetEntity = AgenciaDTO.class)
+    private ArrayList<AgenciaDTO> agencias = new ArrayList<>();
 
     public MunicipioDTO() {
     }
-    public MunicipioDTO(int id_municipio, String nombre) {
+    public MunicipioDTO(short id_municipio, String nombre) {
         this.id_municipio = id_municipio;
         this.nombre = nombre;
     }
-    public long getId_municipio() {
+    public int getId_municipio() {
         return id_municipio;
     }
     public String getNombre() {

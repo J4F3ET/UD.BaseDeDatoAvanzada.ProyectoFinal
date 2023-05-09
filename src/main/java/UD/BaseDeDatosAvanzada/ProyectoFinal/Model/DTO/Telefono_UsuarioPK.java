@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-
+/**
+ * Clase que representa la llave primaria de la tabla Telefono_Usuario de la base de datos.
+ */
 @Embeddable
 public class Telefono_UsuarioPK implements Serializable {
     private static final long serialVersionUID = 1L;

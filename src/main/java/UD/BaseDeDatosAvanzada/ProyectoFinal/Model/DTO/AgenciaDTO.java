@@ -2,16 +2,24 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+
+/**
+ * Clase que representa la tabla Agencia de la base de datos
+ */
 @Entity
-@Table
+@Table(name = "agencia")
 public class AgenciaDTO {
     @EmbeddedId
     private AgenciaPK id;
-    @Column
+    @Column(length = 50)
     private String nombre_agencia;
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = MunicipioDTO.class)
     @JoinColumn(name = "id_municipio", referencedColumnName = "id_municipio")
     private MunicipioDTO municipio;
+
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY, targetEntity = ReservaDTO.class)
+    private ArrayList<ReservaDTO> reservas = new ArrayList<>();
     public AgenciaDTO() {
     }
     public AgenciaDTO(AgenciaPK id, String nombre_agencia, MunicipioDTO municipio) {

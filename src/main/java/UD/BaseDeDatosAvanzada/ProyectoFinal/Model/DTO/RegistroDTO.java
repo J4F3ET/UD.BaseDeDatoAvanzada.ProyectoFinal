@@ -1,19 +1,19 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
-
 import jakarta.persistence.*;
-
 import java.sql.Date;
-
+/**
+ * Clase que representa los atributos la tabla RegistroDTO de la base de datos.
+ */
 @Entity
 @Table(name = "registro")
 public class RegistroDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_registro;
-    @Column
+    @Column(length = 50)
     private String nombre;
     @Column
-    private int edad;
+    private short edad;
     @Column
     private Byte mascota;
     @Column
@@ -27,7 +27,7 @@ public class RegistroDTO {
 
     public RegistroDTO() {
     }
-    public RegistroDTO(String nombre, int edad, Byte mascota, Date fecha, HabitacionDTO habitacion, ReservaDTO reserva) {
+    public RegistroDTO(String nombre, short edad, Byte mascota, Date fecha, HabitacionDTO habitacion, ReservaDTO reserva) {
         this.nombre = nombre;
         this.edad = edad;
         this.mascota = mascota;
@@ -56,7 +56,7 @@ public class RegistroDTO {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(short edad) {
         this.edad = edad;
     }
 

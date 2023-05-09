@@ -1,2 +1,4 @@
-package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;public class UsuarioDAO {
+package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
+
+public class UsuarioDAO {
 }

@@ -2,41 +2,49 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+
+/**
+ * Clase que representa la tabla habitacion de la base de datos
+ */
 @Entity
 @Table(name = "habitacion")
 public class HabitacionDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long numero_habitacion;
+    private int numero_habitacion;
     @Column
-    private int max_huesped;
+    private short max_huesped;
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = HotelDTO.class)
     @JoinColumn(name = "rnt_hotel", referencedColumnName = "rnt_hotel")
     private HotelDTO hotelDTO;
+
+    @OneToMany(mappedBy = "habitacion", fetch = FetchType.LAZY, targetEntity = RegistroDTO.class)
+    private ArrayList<RegistroDTO> registros = new ArrayList<>();
     private double costo;
 
     public HabitacionDTO() {
     }
-    public HabitacionDTO(long numero_habitacion, int max_huesped, HotelDTO hotelDTO) {
+    public HabitacionDTO(int numero_habitacion, short max_huesped, HotelDTO hotelDTO) {
         this.numero_habitacion = numero_habitacion;
         this.max_huesped = max_huesped;
         this.hotelDTO = hotelDTO;
         this.costo = max_huesped * (hotelDTO.getCategoria()*50000);
     }
 
-    public long getNumero_habitacion() {
+    public int getNumero_habitacion() {
         return numero_habitacion;
     }
 
-    public void setNumero_habitacion(long numero_habitacion) {
+    public void setNumero_habitacion(int numero_habitacion) {
         this.numero_habitacion = numero_habitacion;
     }
 
-    public int getMax_huesped() {
+    public short getMax_huesped() {
         return max_huesped;
     }
 
-    public void setMax_huesped(int max_huesped) {
+    public void setMax_huesped(short max_huesped) {
         this.max_huesped = max_huesped;
     }
 
