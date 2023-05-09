@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class MunicipioDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_municipio;
+    private long id_municipio;
 
     @Column
     private String nombre;
@@ -18,7 +18,7 @@ public class MunicipioDTO {
         this.id_municipio = id_municipio;
         this.nombre = nombre;
     }
-    public int getId_municipio() {
+    public long getId_municipio() {
         return id_municipio;
     }
     public String getNombre() {
