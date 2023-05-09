@@ -1,4 +1,4 @@
-package UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers;
+package UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers.TemplatesCTO;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

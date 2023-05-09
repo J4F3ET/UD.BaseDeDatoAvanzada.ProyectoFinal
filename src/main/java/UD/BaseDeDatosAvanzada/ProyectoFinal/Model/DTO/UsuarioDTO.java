@@ -1,4 +1,4 @@
-package UD.BaseDeDatosAvanzada.ProyectoFinal.Model;
+package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class UsuarioDTO {
     private String alias;
     private String rol;
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<Telefono_UsuarioDTO> telefonos = new ArrayList<Telefono_UsuarioDTO>();
+    private ArrayList<Telefono_UsuarioDTO> telefonos = new ArrayList<>();
     public UsuarioDTO() {
     }
 

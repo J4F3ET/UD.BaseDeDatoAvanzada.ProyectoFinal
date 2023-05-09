@@ -1,10 +1,12 @@
-package UD.BaseDeDatosAvanzada.ProyectoFinal.Model;
+package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*    ;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class AgenciaPK implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Column(name = "rnt")
     private long rnt;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,5 +34,18 @@ public class AgenciaPK implements Serializable {
 
     public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AgenciaPK agenciaPK = (AgenciaPK) o;
+        return rnt == agenciaPK.rnt && Objects.equals(usuario, agenciaPK.usuario);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rnt, usuario);
     }
 }

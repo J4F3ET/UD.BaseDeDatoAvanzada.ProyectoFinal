@@ -1,8 +1,9 @@
-package UD.BaseDeDatosAvanzada.ProyectoFinal.Model;
+package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "reserva")
@@ -160,25 +161,24 @@ public class ReservaDTO {
                 ", hotel=" + hotel +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ReservaDTO)) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         ReservaDTO that = (ReservaDTO) o;
+        return id_reserva == that.id_reserva && Double.compare(that.valor_total_pagar, valor_total_pagar) == 0 &&
+                Double.compare(that.valor_min_pagar, valor_min_pagar) == 0 && cant_personas == that.cant_personas &&
+                cant_habitaciones == that.cant_habitaciones && Objects.equals(fecha_inicio, that.fecha_inicio) &&
+                Objects.equals(fecha_final, that.fecha_final) && Objects.equals(responsable, that.responsable) &&
+                Objects.equals(agencia, that.agencia) && Objects.equals(hotel, that.hotel);
+    }
 
-        if (getId_reserva() != that.getId_reserva()) return false;
-        if (Double.compare(that.getValor_total_pagar(), getValor_total_pagar()) != 0) return false;
-        if (Double.compare(that.getValor_min_pagar(), getValor_min_pagar()) != 0) return false;
-        if (getCant_personas() != that.getCant_personas()) return false;
-        if (getCant_habitaciones() != that.getCant_habitaciones()) return false;
-        if (getFecha_inicio() != null ? !getFecha_inicio().equals(that.getFecha_inicio()) : that.getFecha_inicio() != null)
-            return false;
-        if (getFecha_final() != null ? !getFecha_final().equals(that.getFecha_final()) : that.getFecha_final() != null)
-            return false;
-        if (getResponsable() != null ? !getResponsable().equals(that.getResponsable()) : that.getResponsable() != null)
-            return false;
-        if (getAgencia() != null ? !getAgencia().equals(that.getAgencia()) : that.getAgencia() != null) return false;
-        return getHotel() != null ? getHotel().equals(that.getHotel()) : that.getHotel() == null;
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                id_reserva, fecha_inicio, fecha_final, valor_total_pagar,
+                valor_min_pagar, cant_personas, cant_habitaciones,
+                responsable, agencia, hotel);
     }
 }

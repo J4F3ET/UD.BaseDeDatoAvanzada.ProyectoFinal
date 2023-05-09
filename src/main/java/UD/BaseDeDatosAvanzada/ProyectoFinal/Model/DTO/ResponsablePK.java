@@ -1,10 +1,12 @@
-package UD.BaseDeDatosAvanzada.ProyectoFinal.Model;
+package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class ResponsablePK implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Column(name = "identificacion")
     private long identificacion;
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = UsuarioDTO.class)
@@ -12,6 +14,19 @@ public class ResponsablePK implements Serializable {
     private UsuarioDTO usuario;
 
     public ResponsablePK() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResponsablePK that = (ResponsablePK) o;
+        return identificacion == that.identificacion && Objects.equals(usuario, that.usuario);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identificacion, usuario);
     }
 
     public ResponsablePK(long identificacion, UsuarioDTO usuario) {
