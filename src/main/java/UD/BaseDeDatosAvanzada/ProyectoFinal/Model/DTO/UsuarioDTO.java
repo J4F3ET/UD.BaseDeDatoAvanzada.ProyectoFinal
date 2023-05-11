@@ -11,101 +11,87 @@ public class UsuarioDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_usuario;
-    @Column
+    @Column(length = 50)
     private String nombre;
-    @Column
-    private String apellido;
-    @Column
+    @Column(name = "correo_electronico",length = 50)
     private String correo;
-    @Column
-    private String contrasena;
-    @Column
+    @Column(length = 50)
+    private String password;
+    @Column(length = 50)
     private String alias;
-    private String rol;
+    @Column(length = 50)
+    private String direccion;
     @OneToMany(mappedBy = "telefono_usuarioPK.usuario",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Telefono_UsuarioDTO> telefonos = new ArrayList<>();
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(String nombre, String apellido, String correo, String contrasena, String rol) {
+    public UsuarioDTO(long id_usuario, String nombre, String correo, String password, String alias, String direccion, ArrayList<Telefono_UsuarioDTO> telefonos) {
+        this.id_usuario = id_usuario;
         this.nombre = nombre;
-        this.apellido = apellido;
         this.correo = correo;
-        this.contrasena = contrasena;
-        this.rol = rol;
+        this.password = password;
+        this.alias = alias;
+        this.direccion = direccion;
+        this.telefonos = telefonos;
     }
 
     public long getId_usuario() {
         return id_usuario;
     }
 
+    public void setId_usuario(long id_usuario) {
+        this.id_usuario = id_usuario;
+    }
 
     public String getNombre() {
-        return this.nombre;
-    }
-
-    public String getApellido() {
-        return this.apellido;
-    }
-
-    public String getCorreo() {
-        return this.correo;
-    }
-
-    public String getContrasena() {
-        return this.contrasena;
-    }
-
-    public String getRol() {
-        return this.rol;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido= apellido;
+    public String getCorreo() {
+        return correo;
     }
 
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena= contrasena;
+    public String getPassword() {
+        return password;
     }
-    public void setId_usuario(long id_usuario) {
-        this.id_usuario = id_usuario;
+
+    public void setPassword(String password) {
+        this.password = password;
     }
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
+
     public String getAlias() {
-        return this.alias;
+        return alias;
     }
+
     public void setAlias(String alias) {
         this.alias = alias;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public ArrayList<Telefono_UsuarioDTO> getTelefonos() {
         return telefonos;
     }
+
     public void setTelefonos(ArrayList<Telefono_UsuarioDTO> telefonos) {
         this.telefonos = telefonos;
     }
-    @Override
-    public String toString() {
-        return "UsuarioDTO{" +
-                "id_usuario=" + id_usuario +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", correo='" + correo + '\'' +
-                ", contrasena='" + contrasena + '\'' +
-                ", alias='" + alias + '\'' +
-                ", rol='" + rol + '\'' +
-                '}';
-    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof UsuarioDTO) {
