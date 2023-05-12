@@ -19,7 +19,7 @@ public class UsuarioDTO {
     private String password;
     @Column(length = 50)
     private String alias;
-    @Column(length = 50)
+    @Column(length = 100)
     private String direccion;
     @OneToMany(mappedBy = "telefono_usuarioPK.usuario",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Telefono_UsuarioDTO> telefonos = new ArrayList<>();

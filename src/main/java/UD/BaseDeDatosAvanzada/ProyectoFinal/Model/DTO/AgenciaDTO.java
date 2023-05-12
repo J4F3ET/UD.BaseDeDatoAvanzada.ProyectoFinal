@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class AgenciaDTO {
     @EmbeddedId
     private AgenciaPK id;
-    @Column(length = 50)
+    @Column(length = 150)
     private String nombre_agencia;
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = MunicipioDTO.class)
     @JoinColumn(name = "id_municipio", referencedColumnName = "id_municipio")

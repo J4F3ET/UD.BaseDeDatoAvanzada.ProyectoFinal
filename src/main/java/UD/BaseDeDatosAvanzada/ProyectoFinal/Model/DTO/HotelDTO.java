@@ -14,31 +14,29 @@ import java.util.ArrayList;
 public class HotelDTO {
     @Id
     private int rnt_hotel;
-    @Column(length = 50)
+    @Column(length = 150)
     private String nombre;
-    @Column(length = 50)
+    @Column(length = 150)
     private String direccion;
     @Column
-    private Date anio_inauguracion;
+    private short anio_inauguracion;
     @Column
     private float categoria;
-
-    private int antiguedad;
     @OneToMany(mappedBy = "hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<HabitacionDTO> habitaciones = new ArrayList<HabitacionDTO>();
     @OneToMany(mappedBy = "hotel_telefonoPK.hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Hotel_TelefonoDTO> telefonos = new ArrayList<Hotel_TelefonoDTO>();
-
+    @Transient
+    private int antiguedad;
     public HotelDTO() {
     }
-    public HotelDTO(int rnt_hotel, String nombre, String direccion, Date anio_inauguracion, float categoria) {
+    public HotelDTO(int rnt_hotel, String nombre, String direccion, short anio_inauguracion, float categoria) {
         this.rnt_hotel = rnt_hotel;
         this.nombre = nombre;
         this.direccion = direccion;
         this.anio_inauguracion = anio_inauguracion;
         this.categoria = categoria;
-        LocalDate fechaInauguracion = anio_inauguracion.toLocalDate();
-        this.antiguedad = Period.between(fechaInauguracion, LocalDate.now()).getYears();
+        this.antiguedad = anio_inauguracion - (LocalDate.now().getYear());
 
     }
     public long getRnt_hotel() {
@@ -65,11 +63,11 @@ public class HotelDTO {
         this.direccion = direccion;
     }
 
-    public Date getAnio_inauguracion() {
+    public short getAnio_inauguracion() {
         return anio_inauguracion;
     }
 
-    public void setAnio_inauguracion(Date anio_inauguracion) {
+    public void setAnio_inauguracion(short anio_inauguracion) {
         this.anio_inauguracion = anio_inauguracion;
     }
 
