@@ -2,6 +2,15 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 import jakarta.persistence.*;
 import java.sql.Date;
 /**
+ * @Entity Indica que la clase es una entidad
+ * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
+ * @Id indica que el atributo es una clave primaria
+ * @GeneratedValue indica que el valor de la clave primaria es generado automáticamente
+ * @Column indica el nombre de la columna en la tabla
+ * @ManyToOne indica la relación muchos a uno
+ * @JoinColumns indica la relación entre las tablas
+ * @JoinColumn indica la columna que hace referencia a la clave primaria de la tabla relacionada
+ * @Temporal indica el formato de la fecha
  * Clase que representa los atributos la tabla RegistroDTO de la base de datos.
  */
 @Entity
@@ -19,7 +28,11 @@ public class RegistroDTO {
     @Column
     private Date fecha;
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = HabitacionDTO.class)
-    @JoinColumn(name = "numero_habitacion", referencedColumnName = "numero_habitacion")
+    @JoinColumns({
+                    @JoinColumn(name = "piso", referencedColumnName = "piso"),
+                    @JoinColumn(name = "numero_habitacion", referencedColumnName = "numero_habitacion"),
+                    @JoinColumn(name = "rnt_hotel", referencedColumnName = "rnt_hotel")
+            })
     private HabitacionDTO habitacion;
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = ReservaDTO.class)
     @JoinColumn(name = "id_reserva", referencedColumnName = "id_reserva")

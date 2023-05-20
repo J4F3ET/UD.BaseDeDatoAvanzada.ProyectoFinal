@@ -3,41 +3,47 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
+ * @Entity Indica que la clase es una entidad
+ * @Table Indica la tabla que representa esta entidad en la base de datos
+ * @Column Indica el nombre de la columna en la tabla
+ * @EmbeddedId Indica que la clase es una clave primaria compuesta
+ * @ManyToOne Indica la relación muchos a uno
+ * @JoinColumn Indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
+ * @OneToMany Indica la relación uno a muchos
+ * @MappedBy Indica el nombre del atributo que hace referencia a la clave primaria de la tabla referenciada
+ * @Fetch Indica el tipo de carga de datos
+ * @Target Indica el tipo de clase que puede ser anotada con esta anotación
+ * @Inherited Indica que la anotación puede ser heredada
  * Clase que representa la tabla habitacion de la base de datos
  */
 @Entity
 @Table(name = "habitacion")
 public class HabitacionDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int numero_habitacion;
+    @EmbeddedId
+    private HabitacionPK habitacionPK;
     @Column
     private short max_huesped;
-    @ManyToOne(fetch = FetchType.LAZY,targetEntity = HotelDTO.class)
-    @JoinColumn(name = "rnt_hotel", referencedColumnName = "rnt_hotel")
-    private HotelDTO hotelDTO;
-
     @OneToMany(mappedBy = "habitacion", fetch = FetchType.LAZY, targetEntity = RegistroDTO.class)
     private ArrayList<RegistroDTO> registros = new ArrayList<>();
     private double costo;
 
     public HabitacionDTO() {
     }
-    public HabitacionDTO(int numero_habitacion, short max_huesped, HotelDTO hotelDTO) {
-        this.numero_habitacion = numero_habitacion;
+    public HabitacionDTO(HabitacionDTO habitacionDTO, short max_huesped) {
+        this.habitacionPK = habitacionDTO.getHabitacionPK();
         this.max_huesped = max_huesped;
-        this.hotelDTO = hotelDTO;
-        this.costo = max_huesped * (hotelDTO.getCategoria()*50000);
+        this.costo = max_huesped * (habitacionPK.getHotelDTO().getCategoria()*50000);
     }
 
-    public int getNumero_habitacion() {
-        return numero_habitacion;
+    public HabitacionPK getHabitacionPK() {
+        return habitacionPK;
     }
 
-    public void setNumero_habitacion(int numero_habitacion) {
-        this.numero_habitacion = numero_habitacion;
+    public void setHabitacionPK(HabitacionPK habitacionPK) {
+        this.habitacionPK = habitacionPK;
     }
 
     public short getMax_huesped() {
@@ -48,18 +54,23 @@ public class HabitacionDTO {
         this.max_huesped = max_huesped;
     }
 
-    public HotelDTO getHotelDTO() {
-        return hotelDTO;
-    }
-
-    public void setHotelDTO(HotelDTO hotelDTO) {
-        this.hotelDTO = hotelDTO;
-    }
-
     public double getCosto() {
         return costo;
     }
     public void setCosto(double costo) {
         this.costo = costo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HabitacionDTO that = (HabitacionDTO) o;
+        return max_huesped == that.max_huesped && Double.compare(that.costo, costo) == 0 && Objects.equals(habitacionPK, that.habitacionPK) && Objects.equals(registros, that.registros);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(habitacionPK, max_huesped, registros, costo);
     }
 }

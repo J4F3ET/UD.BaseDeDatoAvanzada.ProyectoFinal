@@ -7,6 +7,16 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 /**
+ * @Entity Indica que la clase es una entidad
+ * @Table Indica la tabla que representa esta entidad en la base de datos
+ * @Column Indica el nombre de la columna en la tabla
+ * @Id Indica que el atributo es una clave primaria
+ * @ManyToOne Indica la relación muchos a uno
+ * @JoinColumn Indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
+ * @OneToMany Indica la relación uno a muchos
+ * @MappedBy Indica el nombre del atributo que hace referencia a la clave primaria de la tabla referenciada
+ * @Fetch Indica el tipo de carga de datos
+ * @Inherited Indica que la anotación puede ser heredada
  * Clase que representa la tabla Hotel de la base de datos.
  */
 @Entity
@@ -22,10 +32,10 @@ public class HotelDTO {
     private short anio_inauguracion;
     @Column
     private float categoria;
-    @OneToMany(mappedBy = "hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<HabitacionDTO> habitaciones = new ArrayList<HabitacionDTO>();
     @OneToMany(mappedBy = "hotel_telefonoPK.hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     private ArrayList<Hotel_TelefonoDTO> telefonos = new ArrayList<Hotel_TelefonoDTO>();
+    @OneToMany(mappedBy = "habitacionPK.hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
+    private ArrayList<HabitacionDTO> habitaciones = new ArrayList<>();
     @Transient
     private int antiguedad;
     public HotelDTO() {

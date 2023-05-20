@@ -2,6 +2,11 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
 /**
+ * @Entity Clase que define los atributos para el objeto ServicioDTO.
+ * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
+ * @Id indica que el atributo es una clave primaria
+ * @GeneratedValue indica que el atributo es autogenerado
+ * @Column indica el nombre de la columna en la tabla
  * Clase que representa los atributos la tabla ServicioDTO de la base de datos.
  */
 @Entity
