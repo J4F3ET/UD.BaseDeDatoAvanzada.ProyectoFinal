@@ -1,8 +1,15 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
+import java.util.Collection;
 import java.util.ArrayList;
 /**
+ * @Entity Clase que define los atributos para el objeto UsuarioDTO.
+ * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
+ * @Id indica que el atributo es una clave primaria
+ * @GeneratedValue indica que el atributo es autogenerado
+ * @OneToMany indica que la clase es una relación uno a muchos
+ * @Column indica el nombre de la columna en la tabla
  * Clase que representa la tabla Usuario de la base de datos.
  */
 @Entity
@@ -21,8 +28,8 @@ public class UsuarioDTO {
     private String alias;
     @Column(length = 100)
     private String direccion;
-    @OneToMany(mappedBy = "telefono_usuarioPK.usuario",cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<Telefono_UsuarioDTO> telefonos = new ArrayList<>();
+    @OneToMany(mappedBy = "telefono_usuarioPK.usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Collection<Telefono_UsuarioDTO> telefonos = new ArrayList<>();
     public UsuarioDTO() {
     }
 
@@ -84,7 +91,7 @@ public class UsuarioDTO {
         this.direccion = direccion;
     }
 
-    public ArrayList<Telefono_UsuarioDTO> getTelefonos() {
+    public Collection<Telefono_UsuarioDTO> getTelefonos() {
         return telefonos;
     }
 

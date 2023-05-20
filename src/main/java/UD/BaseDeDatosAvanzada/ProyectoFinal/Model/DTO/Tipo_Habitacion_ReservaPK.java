@@ -6,6 +6,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
+ * @Embeddable Clase que define los atributos para el objeto Tipo_Habitacion_ReservaPK.
+ * @Column indica que el atributo se mapea a la columna con el mismo nombre
+ * @ManyToOne indica la relación muchos a uno
+ * @JoinColumn indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
  * Clase que representa la llave primaria de la tabla Tipo_Habitacion_Reserva de la base de datos.
  */
 @Embeddable
