@@ -2,6 +2,7 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces;
 
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsuarioDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,4 +14,34 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UsuarioINF extends JpaRepository<UsuarioDTO,Long> {
+    /**
+     * Metodo que permite saber si existe un UsuarioDTO con el Alias.
+     * @Query Esta etiqueta permite realizar una consulta personalizada.
+     *
+     * Consulta:
+     *           SELECT u.*
+     *           FROM UsuarioDTO u
+     *           WHERE u.alias = Alias;
+     *
+     * @param alias Este parametro representa el alias del registro a obtener.
+     * @return UsuarioDTO
+     */
+    @Query("SELECT u FROM UsuarioDTO u WHERE u.alias = :alias")
+    UsuarioDTO findByAlias(String alias);
+
+    /**
+     * Metodo que permite saber si existe un UsuarioDTO con el id y contrasena.
+     * @Query Esta etiqueta permite realizar una consulta personalizada.
+     * Consulta:
+     *          SELECT u.*
+     *          FROM UsuarioDTO u
+     *          WHERE u.id_usuario = id_usuario AND u.contrasena = contrasena;
+     *
+     * @param id_usuario
+     * @param contrasena
+     * @return UsuarioDTO
+     */
+    @Query("SELECT u FROM  UsuarioDTO u WHERE u.alias = :alias AND u.password = :contrasena")
+    UsuarioDTO loginUsuario(String alias ,String contrasena);
+
 }

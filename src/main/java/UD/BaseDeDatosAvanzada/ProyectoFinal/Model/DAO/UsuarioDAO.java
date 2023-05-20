@@ -1,16 +1,12 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.UsuarioINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsuarioDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Service Esta etiqueta indica que la clase es un servicio, es decir, una clase que se encarga de gestionar la
  * capa de negocio, permitiendo realizar las operaciones básicas (CRUD) sobre la tabla que representa la entidad
@@ -30,7 +26,7 @@ public class UsuarioDAO {
      * Metodo que permite obtener todos los registros de la tabla que representa la entidad UsuarioDTO.
      * @return Iterable<UsuarioDTO>
      */
-    public ArrayList<UsuarioDTO> findAll() {
+    public ArrayList<UsuarioDTO> findAll(int pageNumber) {
         /**
          * Pageable es una interfaz que define un conjunto de métodos para obtener información sobre la
          * configuración de la página actual.
@@ -40,11 +36,10 @@ public class UsuarioDAO {
          * pageNumber, pageSize y sort.
          */
         int pageSize = 20;
-        int pageNumber = 0;
-        Sort sort = Sort.by(Sort.Direction.ASC, "id_usuario");
+        Sort sort = Sort.by(Sort.Direction.ASC, "id");
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         Page<UsuarioDTO> page = usuarioINF.findAll(pageable);
-        return (ArrayList<UsuarioDTO>) page.getContent();
+        return new ArrayList<>(page.getContent());
     }
     /**
      * Metodo que permite obtener un registro de la tabla que representa la entidad UsuarioDTO.
@@ -79,5 +74,17 @@ public class UsuarioDAO {
      */
     public void deleteById(Long id) {
         usuarioINF.deleteById(id);
+    }
+    /**
+     * @Param alias Este parametro representa el nombre del UsuarioDTO a buscar.
+     * Metodo que permite buscar un UsuarioDTO por el nombre.
+     * @return boolean, true si existe, false si no existe.
+     */
+    public long existsByAlias(String alias) {
+        return usuarioINF.findByAlias(alias).getId_usuario();
+    }
+
+    public UsuarioDTO loginUsuario(String alias, String contrasena) {
+        return usuarioINF.loginUsuario(alias,contrasena);
     }
 }
