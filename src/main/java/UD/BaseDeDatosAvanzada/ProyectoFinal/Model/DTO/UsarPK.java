@@ -6,6 +6,11 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 /**
+ * @Entity Clase que define los atributos para el objeto UsarDTO.
+ * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
+ * @EmbeddedId indica que la clase es una clave primaria compuesta
+ * @ManyToOne indica que la clase es una clave foranea
+ * @JoinColumn indica el nombre de la columna de la clave foranea
  * Clase que representa la llave primaria de la tabla usar de la base de datos.
  */
 @Embeddable

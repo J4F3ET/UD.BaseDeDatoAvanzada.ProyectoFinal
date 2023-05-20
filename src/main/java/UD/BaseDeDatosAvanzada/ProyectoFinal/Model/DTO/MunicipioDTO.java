@@ -5,6 +5,12 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 
 /**
+ * @Entity Clase que define los atributos para el objeto MunicipioDTO.
+ * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
+ * @Id indica que el atributo es una clave primaria
+ * @GeneratedValue indica que el valor de la clave primaria es generado automáticamente
+ * @Column indica el nombre de la columna en la tabla
+ * @OneToMany indica la relación uno a muchos
  * Clase que representa los atributos la tabla MunicipioDTO de la base de datos.
  */
 @Entity

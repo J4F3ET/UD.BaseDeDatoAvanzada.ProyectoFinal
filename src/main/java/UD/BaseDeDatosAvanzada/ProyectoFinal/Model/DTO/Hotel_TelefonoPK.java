@@ -5,6 +5,10 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 /**
+ * @Embeddable Clase que define los atributos para el objeto Hotel_TelefonoPK.
+ * @Column indica que el atributo es un campo de la tabla
+ * @ManyToOne indica la relación muchos a uno
+ * @JoinColumn indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
  * Esta clase representa a la clave primaria de la tabla hotel_telefono
  */
 @Embeddable
