@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 /**
+ * @Entity Clase que define los atributos para el objeto UsarDTO.
+ * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
+ * @EmbeddedId indica que la clase es una clave primaria compuesta
  * Clase que representa la tabla usar de la base de datos..
  */
 @Entity

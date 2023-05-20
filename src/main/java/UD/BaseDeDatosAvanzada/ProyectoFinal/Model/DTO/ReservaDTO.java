@@ -6,6 +6,15 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
 /**
+ * @Entity Clase que define los atributos para el objeto ReservaDTO.
+ * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
+ * @Id indica que el atributo es una clave primaria
+ * @GeneratedValue indica que el valor de la clave primaria es generado automáticamente
+ * @Column indica el nombre de la columna en la tabla
+ * @ManyToOne indica la relación muchos a uno
+ * @OneToMany indica la relación uno a muchos
+ * @JoinColumns indica el nombre de las columnas que hacen referencia a la clave primaria de la tabla padre
+ * @JoinColumn indica el nombre de la columna que hace referencia a la clave primaria de la tabla padre
  * Clase que representa la tabla Reserva de la base de datos.
  */
 @Entity
