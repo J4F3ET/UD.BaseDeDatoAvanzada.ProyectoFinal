@@ -1,5 +1,7 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -40,21 +42,26 @@ public class ReservaDTO {
             @JoinColumn(name = "identificacion", referencedColumnName = "identificacion"),
             @JoinColumn(name = "id_usuario_responsable", referencedColumnName = "id_usuario")
     })
+    @JsonBackReference
     private ResponsableDTO responsable;
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = AgenciaDTO.class)
     @JoinColumns({
             @JoinColumn(name = "rnt_agencia", referencedColumnName = "rnt_agencia"),
             @JoinColumn(name = "id_usuario_agencia", referencedColumnName = "id_usuario")
     })
+    @JsonBackReference
     private AgenciaDTO agencia;
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = HotelDTO.class)
     @JoinColumn(name = "rnt_hotel", referencedColumnName = "rnt_hotel")
     private HotelDTO hotel;
     @OneToMany(mappedBy = "id.id_reserva", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private ArrayList<Tipo_Habitacion_ReservaDTO> tipo_habitacion_reserva = new ArrayList<>();
     @OneToMany(mappedBy = "reserva", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private ArrayList<RegistroDTO> reserva_registros = new ArrayList<>();
     @OneToMany(mappedBy = "id.reservaDTO", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private ArrayList<UsarDTO> reserva_servicio = new ArrayList<>();
     public ReservaDTO() {
     }

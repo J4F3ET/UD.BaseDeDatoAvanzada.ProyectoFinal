@@ -1,5 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*    ;
 import java.io.Serializable;
 import java.util.Objects;
@@ -19,6 +20,7 @@ public class AgenciaPK implements Serializable {
     private int rnt;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @JsonBackReference
     private UsuarioDTO usuario;
 
     public AgenciaPK() {
