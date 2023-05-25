@@ -1,5 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class AgenciaDTO {
     private MunicipioDTO municipio;
 
     @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY, targetEntity = ReservaDTO.class)
+    @JsonManagedReference
     private ArrayList<ReservaDTO> reservas = new ArrayList<>();
     public AgenciaDTO() {
     }

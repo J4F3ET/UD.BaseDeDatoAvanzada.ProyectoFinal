@@ -1,5 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class Hotel_TelefonoPK implements Serializable {
     private long telefono;
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = HotelDTO.class)
     @JoinColumn(name = "rnt_hotel", referencedColumnName = "rnt_hotel")
+    @JsonBackReference
     private HotelDTO hotelDTO;
 
     public Hotel_TelefonoPK() {

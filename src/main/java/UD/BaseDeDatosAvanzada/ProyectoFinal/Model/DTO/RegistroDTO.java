@@ -1,4 +1,5 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.sql.Date;
 /**
@@ -28,6 +29,7 @@ public class RegistroDTO {
     @Column
     private Date fecha;
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = HabitacionDTO.class)
+    @JsonBackReference
     @JoinColumns({
                     @JoinColumn(name = "piso", referencedColumnName = "piso"),
                     @JoinColumn(name = "numero_habitacion", referencedColumnName = "numero_habitacion"),
@@ -36,6 +38,7 @@ public class RegistroDTO {
     private HabitacionDTO habitacion;
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = ReservaDTO.class)
     @JoinColumn(name = "id_reserva", referencedColumnName = "id_reserva")
+    @JsonBackReference
     private ReservaDTO reserva;
 
     public RegistroDTO() {
