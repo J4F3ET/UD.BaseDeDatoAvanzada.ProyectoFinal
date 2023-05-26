@@ -7,6 +7,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * @Entity Indica que la clase es una entidad
  * @Table Indica la tabla que representa esta entidad en la base de datos
@@ -35,10 +37,10 @@ public class HotelDTO {
     private float categoria;
     @OneToMany(mappedBy = "hotel_telefonoPK.hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private ArrayList<Hotel_TelefonoDTO> telefonos = new ArrayList<Hotel_TelefonoDTO>();
+    private Collection<Hotel_TelefonoDTO> telefonos = new ArrayList<Hotel_TelefonoDTO>();
     @OneToMany(mappedBy = "habitacionPK.hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private ArrayList<HabitacionDTO> habitaciones = new ArrayList<>();
+    private Collection<HabitacionDTO> habitaciones = new ArrayList<>();
     @Transient
     private int antiguedad;
     public HotelDTO() {
@@ -100,7 +102,7 @@ public class HotelDTO {
         this.antiguedad = antiguedad;
     }
 
-    public ArrayList<HabitacionDTO> getHabitaciones() {
+    public Collection<HabitacionDTO> getHabitaciones() {
         return habitaciones;
     }
 
@@ -108,7 +110,7 @@ public class HotelDTO {
         this.habitaciones = habitaciones;
     }
 
-    public ArrayList<Hotel_TelefonoDTO> getTelefonos() {
+    public Collection<Hotel_TelefonoDTO> getTelefonos() {
         return telefonos;
     }
 

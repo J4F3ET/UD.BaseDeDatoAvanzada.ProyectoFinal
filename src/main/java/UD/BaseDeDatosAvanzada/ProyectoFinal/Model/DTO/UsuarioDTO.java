@@ -1,5 +1,4 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Collection;
@@ -19,6 +18,7 @@ import java.util.ArrayList;
 @Entity
 @Table(name = "usuario")
 public class UsuarioDTO {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")

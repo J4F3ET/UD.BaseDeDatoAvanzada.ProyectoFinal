@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @Entity Indica que la clase es una entidad
@@ -32,7 +33,7 @@ public class AgenciaDTO {
 
     @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY, targetEntity = ReservaDTO.class)
     @JsonManagedReference
-    private ArrayList<ReservaDTO> reservas = new ArrayList<>();
+    private Collection<ReservaDTO> reservas = new ArrayList<>();
     public AgenciaDTO() {
     }
     public AgenciaDTO(AgenciaPK id, String nombre_agencia, MunicipioDTO municipio) {

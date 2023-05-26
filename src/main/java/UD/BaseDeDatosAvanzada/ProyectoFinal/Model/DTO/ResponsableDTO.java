@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @Entity Clase que define los atributos para el objeto ResponsableDTO.
@@ -22,7 +23,7 @@ public class ResponsableDTO {
     private short categoria;
     @OneToMany(mappedBy = "responsable", fetch = FetchType.LAZY, targetEntity = ReservaDTO.class)
     @JsonManagedReference
-    private ArrayList<ReservaDTO> reservas = new ArrayList<>();
+    private Collection<ReservaDTO> reservas = new ArrayList<>();
     public ResponsableDTO() {
     }
     public ResponsableDTO(ResponsablePK id, short categoria) {
