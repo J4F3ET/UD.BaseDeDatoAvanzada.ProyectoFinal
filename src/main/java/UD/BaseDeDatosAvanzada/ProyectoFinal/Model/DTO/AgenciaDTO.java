@@ -65,4 +65,14 @@ public class AgenciaDTO {
     public void setMunicipio(MunicipioDTO municipio) {
         this.municipio = municipio;
     }
+
+    @Override
+    public String toString() {
+        return "AgenciaDTO{" +
+                "id=" + id +
+                ", nombre_agencia='" + nombre_agencia + '\'' +
+                ", municipio=" + municipio +
+                ", reservas=" + reservas.toString() +
+                '}';
+    }
 }

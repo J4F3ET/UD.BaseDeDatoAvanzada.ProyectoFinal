@@ -24,19 +24,6 @@ public class ResponsablePK implements Serializable {
     public ResponsablePK() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ResponsablePK that = (ResponsablePK) o;
-        return identificacion == that.identificacion && Objects.equals(usuario, that.usuario);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(identificacion, usuario);
-    }
-
     public ResponsablePK(long identificacion, UsuarioDTO usuario) {
         this.identificacion = identificacion;
         this.usuario = usuario;
@@ -56,5 +43,26 @@ public class ResponsablePK implements Serializable {
 
     public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResponsablePK that = (ResponsablePK) o;
+        return identificacion == that.identificacion && Objects.equals(usuario, that.usuario);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identificacion, usuario);
+    }
+
+    @Override
+    public String toString() {
+        return "ResponsablePK{" +
+                "identificacion=" + identificacion +
+                ", usuario=" + usuario +
+                '}';
     }
 }

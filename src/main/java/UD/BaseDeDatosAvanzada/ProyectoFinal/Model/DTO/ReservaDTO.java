@@ -34,8 +34,6 @@ public class ReservaDTO {
     private Timestamp fecha_creacion;
     @Column
     private short cant_personas;
-    @Column
-    private short cant_habitaciones;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "identificacion", referencedColumnName = "identificacion"),
@@ -66,13 +64,12 @@ public class ReservaDTO {
     @JsonManagedReference
     private Collection<PagoDTO> pagos = new ArrayList<>();
 
-    public ReservaDTO(long id_reserva, Timestamp fecha_inicio, Timestamp fecha_final, Timestamp fecha_creacion, short cant_personas, short cant_habitaciones, ResponsableDTO responsable, AgenciaDTO agencia, Collection<RecibirDTO> habitacion, Collection<RegistroDTO> reserva_registros, Collection<UsarDTO> reserva_servicio, Collection<PagoDTO> pagos) {
+    public ReservaDTO(long id_reserva, Timestamp fecha_inicio, Timestamp fecha_final, Timestamp fecha_creacion, short cant_personas, ResponsableDTO responsable, AgenciaDTO agencia, Collection<RecibirDTO> habitacion, Collection<RegistroDTO> reserva_registros, Collection<UsarDTO> reserva_servicio, Collection<PagoDTO> pagos) {
         this.id_reserva = id_reserva;
         this.fecha_inicio = fecha_inicio;
         this.fecha_final = fecha_final;
         this.fecha_creacion = fecha_creacion;
         this.cant_personas = cant_personas;
-        this.cant_habitaciones = cant_habitaciones;
         this.responsable = responsable;
         this.agencia = agencia;
         this.habitacion = habitacion;
@@ -119,14 +116,6 @@ public class ReservaDTO {
 
     public void setCant_personas(short cant_personas) {
         this.cant_personas = cant_personas;
-    }
-
-    public short getCant_habitaciones() {
-        return cant_habitaciones;
-    }
-
-    public void setCant_habitaciones(short cant_habitaciones) {
-        this.cant_habitaciones = cant_habitaciones;
     }
 
     public ResponsableDTO getResponsable() {
@@ -182,12 +171,12 @@ public class ReservaDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ReservaDTO that = (ReservaDTO) o;
-        return id_reserva == that.id_reserva && Objects.equals(that.fecha_creacion, fecha_creacion) && cant_personas == that.cant_personas && cant_habitaciones == that.cant_habitaciones && Objects.equals(fecha_inicio, that.fecha_inicio) && Objects.equals(fecha_final, that.fecha_final) && Objects.equals(responsable, that.responsable) && Objects.equals(agencia, that.agencia) && Objects.equals(habitacion, that.habitacion) && Objects.equals(reserva_registros, that.reserva_registros) && Objects.equals(reserva_servicio, that.reserva_servicio) && Objects.equals(pagos, that.pagos);
+        return id_reserva == that.id_reserva && Objects.equals(that.fecha_creacion, fecha_creacion) && cant_personas == that.cant_personas && Objects.equals(fecha_inicio, that.fecha_inicio) && Objects.equals(fecha_final, that.fecha_final) && Objects.equals(responsable, that.responsable) && Objects.equals(agencia, that.agencia) && Objects.equals(habitacion, that.habitacion) && Objects.equals(reserva_registros, that.reserva_registros) && Objects.equals(reserva_servicio, that.reserva_servicio) && Objects.equals(pagos, that.pagos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_reserva, fecha_inicio, fecha_final, fecha_creacion, cant_personas, cant_habitaciones, responsable, agencia, habitacion, reserva_registros, reserva_servicio, pagos);
+        return Objects.hash(id_reserva, fecha_inicio, fecha_final, fecha_creacion, cant_personas, responsable, agencia, habitacion, reserva_registros, reserva_servicio, pagos);
     }
 
     @Override
@@ -198,7 +187,6 @@ public class ReservaDTO {
                 ", fecha_final=" + fecha_final +
                 ", fecha_creacion=" + fecha_creacion +
                 ", cant_personas=" + cant_personas +
-                ", cant_habitaciones=" + cant_habitaciones +
                 ", responsable=" + responsable +
                 ", agencia=" + agencia +
                 ", habitacion=" + habitacion +

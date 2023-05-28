@@ -1,6 +1,9 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
+
+import java.util.Objects;
+
 /**
  * @Entity Clase que define los atributos para el objeto ServicioDTO.
  * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
@@ -53,11 +56,17 @@ public class ServicioDTO {
                 ", costo=" + costo +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ServicioDTO)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         ServicioDTO that = (ServicioDTO) o;
-        return getId_servicio() == that.getId_servicio() && getCosto() == that.getCosto() && getNombre().equals(that.getNombre());
+        return id_servicio == that.id_servicio && Double.compare(that.costo, costo) == 0 && Objects.equals(nombre, that.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_servicio, nombre, costo);
     }
 }

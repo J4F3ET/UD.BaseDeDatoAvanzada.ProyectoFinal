@@ -16,9 +16,6 @@ import java.util.ArrayList;
 @RequestMapping("/Usuario")
 public class UsuarioCTO {
     private UsuarioDAO usuarioDAO;
-    public UsuarioCTO(UsuarioDAO usuarioDAO) {
-        this.usuarioDAO = usuarioDAO;
-    }
     /**
      * @GetMapping("/listar") Esta etiqueta indica que la ruta de acceso a la que se accede para gestionar las
      * peticiones es /listar.

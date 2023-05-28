@@ -39,14 +39,13 @@ public class UsuarioDTO {
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(long id_usuario, String nombre, String correo, String password, String alias, String direccion, ArrayList<Telefono_UsuarioDTO> telefonos) {
+    public UsuarioDTO(long id_usuario, String nombre, String correo, String password, String alias, String direccion) {
         this.id = id_usuario;
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;
         this.alias = alias;
         this.direccion = direccion;
-        this.telefonos = telefonos;
     }
 
     public long getId_usuario() {
@@ -117,5 +116,17 @@ public class UsuarioDTO {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "UsuarioDTO{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                ", password='" + password + '\'' +
+                ", alias='" + alias + '\'' +
+                ", direccion='" + direccion + '\'' +
+                '}';
     }
 }

@@ -52,4 +52,12 @@ public class RecibirPK implements Serializable {
     public int hashCode() {
         return Objects.hash(reserva, habitacion);
     }
+
+    @Override
+    public String toString() {
+        return "RecibirPK{" +
+                "reserva=" + reserva +
+                ", habitacion=" + habitacion +
+                '}';
+    }
 }

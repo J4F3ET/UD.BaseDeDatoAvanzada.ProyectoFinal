@@ -47,4 +47,13 @@ public class MunicipioDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public String toString() {
+        return "MunicipioDTO{" +
+                "id_municipio=" + id_municipio +
+                ", nombre='" + nombre + '\'' +
+                ", agencias=" + agencias +
+                '}';
+    }
 }

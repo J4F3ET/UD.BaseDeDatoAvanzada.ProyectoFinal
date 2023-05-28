@@ -58,4 +58,12 @@ public class AgenciaPK implements Serializable {
     public int hashCode() {
         return Objects.hash(rnt, usuario);
     }
+
+    @Override
+    public String toString() {
+        return "AgenciaPK{" +
+                "rnt=" + rnt +
+                ", usuario=" + usuario.toString() +
+                '}';
+    }
 }

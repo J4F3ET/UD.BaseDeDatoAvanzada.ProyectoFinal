@@ -3,11 +3,10 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * @Entity Indica que la clase es una entidad
@@ -116,5 +115,32 @@ public class HotelDTO {
 
     public void setTelefonos(ArrayList<Hotel_TelefonoDTO> telefonos) {
         this.telefonos = telefonos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HotelDTO hotelDTO = (HotelDTO) o;
+        return rnt_hotel == hotelDTO.rnt_hotel && anio_inauguracion == hotelDTO.anio_inauguracion && Float.compare(hotelDTO.categoria, categoria) == 0 && antiguedad == hotelDTO.antiguedad && Objects.equals(nombre, hotelDTO.nombre) && Objects.equals(direccion, hotelDTO.direccion) && Objects.equals(telefonos, hotelDTO.telefonos) && Objects.equals(habitaciones, hotelDTO.habitaciones);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rnt_hotel, nombre, direccion, anio_inauguracion, categoria, telefonos, habitaciones, antiguedad);
+    }
+
+    @Override
+    public String toString() {
+        return "HotelDTO{" +
+                "rnt_hotel=" + rnt_hotel +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", anio_inauguracion=" + anio_inauguracion +
+                ", categoria=" + categoria +
+                ", telefonos=" + telefonos +
+                ", habitaciones=" + habitaciones +
+                ", antiguedad=" + antiguedad +
+                '}';
     }
 }

@@ -15,6 +15,10 @@ public class RecibirDTO {
     public RecibirDTO() {
     }
 
+    public RecibirDTO(RecibirPK id) {
+        this.id = id;
+    }
+
     public RecibirPK getId() {
         return id;
     }
@@ -34,5 +38,12 @@ public class RecibirDTO {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "RecibirDTO{" +
+                "id=" + id +
+                '}';
     }
 }

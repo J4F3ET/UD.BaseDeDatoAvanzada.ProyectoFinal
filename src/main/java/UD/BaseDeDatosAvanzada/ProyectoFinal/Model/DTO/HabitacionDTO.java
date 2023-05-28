@@ -80,4 +80,15 @@ public class HabitacionDTO {
     public int hashCode() {
         return Objects.hash(habitacionPK, max_huesped, registros, costo);
     }
+
+    @Override
+    public String toString() {
+        return "HabitacionDTO{" +
+                "habitacionPK=" + habitacionPK +
+                ", max_huesped=" + max_huesped +
+                ", registros=" + registros +
+                ", reserva=" + reserva +
+                ", costo=" + costo +
+                '}';
+    }
 }

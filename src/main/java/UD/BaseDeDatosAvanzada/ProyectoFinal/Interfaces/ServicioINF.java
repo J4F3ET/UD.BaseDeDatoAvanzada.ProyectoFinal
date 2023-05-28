@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
  * Interface que hereda de JpaRepository para poder utilizar los metodos de JPA para ServicioDTO.
  */
 @Repository
-public interface ServicioINF extends JpaRepository<ServicioDTO,Long> {
+public interface ServicioINF extends JpaRepository<ServicioDTO,Integer> {
 }
