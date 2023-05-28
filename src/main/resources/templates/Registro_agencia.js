@@ -15,7 +15,15 @@ form.addEventListener('submit', (e) => {
 
 
     // Puedes hacer lo que necesites con los datos recopilados, como enviarlos a través de una solicitud HTTP o procesarlos en el lado del cliente.
-    let Agencia = {nombre_agencia : nombre_agencia, rnt_agencia : rnt_agencia, municipio:municipio, correo_electronico:correo_electronico, password:password,alias:alias,direccion:direccion,telefono:telefono}; 
+    let Agencia = {
+        nombre_agencia : nombre_agencia,
+        rnt_agencia : rnt_agencia,
+        municipio:municipio,
+        correo_electronico:correo_electronico,
+        password:password,
+        alias:alias,
+        direccion:direccion,
+        telefono:telefono};
     let AgenciaJSON = JSON.stringify(Agencia);    
 
     fetch('proceda a meter su URL ',{

@@ -1,6 +1,9 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
+
+import java.util.Objects;
+
 /**
  * @Entity Clase que define los atributos para el objeto Telefono_UsuarioDTO.
  * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
@@ -24,5 +27,25 @@ public class Telefono_UsuarioDTO {
 
     public void setId(Telefono_UsuarioPK telefono_usuarioPK) {
         this.telefono_usuarioPK = telefono_usuarioPK;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Telefono_UsuarioDTO that = (Telefono_UsuarioDTO) o;
+        return Objects.equals(telefono_usuarioPK, that.telefono_usuarioPK);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(telefono_usuarioPK);
+    }
+
+    @Override
+    public String toString() {
+        return "Telefono_UsuarioDTO{" +
+                "telefono_usuarioPK=" + telefono_usuarioPK +
+                '}';
     }
 }

@@ -1,8 +1,10 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @Entity Indica que la clase es una entidad
@@ -30,7 +32,8 @@ public class AgenciaDTO {
     private MunicipioDTO municipio;
 
     @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY, targetEntity = ReservaDTO.class)
-    private ArrayList<ReservaDTO> reservas = new ArrayList<>();
+    @JsonManagedReference
+    private Collection<ReservaDTO> reservas = new ArrayList<>();
     public AgenciaDTO() {
     }
     public AgenciaDTO(AgenciaPK id, String nombre_agencia, MunicipioDTO municipio) {
@@ -61,5 +64,15 @@ public class AgenciaDTO {
 
     public void setMunicipio(MunicipioDTO municipio) {
         this.municipio = municipio;
+    }
+
+    @Override
+    public String toString() {
+        return "AgenciaDTO{" +
+                "id=" + id +
+                ", nombre_agencia='" + nombre_agencia + '\'' +
+                ", municipio=" + municipio +
+                ", reservas=" + reservas.toString() +
+                '}';
     }
 }

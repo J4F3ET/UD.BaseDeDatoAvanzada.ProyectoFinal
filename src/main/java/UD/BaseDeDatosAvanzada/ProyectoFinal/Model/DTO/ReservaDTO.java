@@ -1,9 +1,12 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 /**
  * @Entity Clase que define los atributos para el objeto ReservaDTO.
@@ -22,72 +25,64 @@ import java.util.Objects;
 public class ReservaDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_reserva;
+    private long id_reserva;
     @Column
     private Timestamp fecha_inicio;
     @Column
     private Timestamp fecha_final;
     @Column
-    private double valor_total_pagar;
-    @Column
-    private double valor_min_pagar;
+    private Timestamp fecha_creacion;
     @Column
     private short cant_personas;
-    @Column
-    private short cant_habitaciones;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(name = "identificacion", referencedColumnName = "identificacion"),
             @JoinColumn(name = "id_usuario_responsable", referencedColumnName = "id_usuario")
     })
+    @JsonBackReference
     private ResponsableDTO responsable;
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = AgenciaDTO.class)
     @JoinColumns({
             @JoinColumn(name = "rnt_agencia", referencedColumnName = "rnt_agencia"),
             @JoinColumn(name = "id_usuario_agencia", referencedColumnName = "id_usuario")
     })
+    @JsonBackReference
     private AgenciaDTO agencia;
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = HotelDTO.class)
-    @JoinColumn(name = "rnt_hotel", referencedColumnName = "rnt_hotel")
-    private HotelDTO hotel;
-    @OneToMany(mappedBy = "id.id_reserva", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<Tipo_Habitacion_ReservaDTO> tipo_habitacion_reserva = new ArrayList<>();
+    @OneToMany(mappedBy = "id.reserva", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private Collection<RecibirDTO> habitacion = new ArrayList<>();
+
     @OneToMany(mappedBy = "reserva", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<RegistroDTO> reserva_registros = new ArrayList<>();
+    @JsonManagedReference
+    private Collection<RegistroDTO> reserva_registros = new ArrayList<>();
     @OneToMany(mappedBy = "id.reservaDTO", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<UsarDTO> reserva_servicio = new ArrayList<>();
+    @JsonManagedReference
+    private Collection<UsarDTO> reserva_servicio = new ArrayList<>();
     public ReservaDTO() {
     }
+    @OneToMany(mappedBy = "id.reservaDTO", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private Collection<PagoDTO> pagos = new ArrayList<>();
 
-    public ReservaDTO(int id_reserva,
-                      Timestamp fecha_inicio,
-                      Timestamp fecha_final,
-                      double valor_total_pagar,
-                      double valor_min_pagar,
-                      short cant_personas,
-                      short cant_habitaciones,
-                      ResponsableDTO responsable,
-                      AgenciaDTO agencia,
-                      HotelDTO hotel
-                       )
-    {
+    public ReservaDTO(long id_reserva, Timestamp fecha_inicio, Timestamp fecha_final, Timestamp fecha_creacion, short cant_personas, ResponsableDTO responsable, AgenciaDTO agencia, Collection<RecibirDTO> habitacion, Collection<RegistroDTO> reserva_registros, Collection<UsarDTO> reserva_servicio, Collection<PagoDTO> pagos) {
         this.id_reserva = id_reserva;
         this.fecha_inicio = fecha_inicio;
         this.fecha_final = fecha_final;
-        this.valor_total_pagar = valor_total_pagar;
-        this.valor_min_pagar = valor_min_pagar;
+        this.fecha_creacion = fecha_creacion;
         this.cant_personas = cant_personas;
-        this.cant_habitaciones = cant_habitaciones;
         this.responsable = responsable;
         this.agencia = agencia;
-        this.hotel = hotel;
+        this.habitacion = habitacion;
+        this.reserva_registros = reserva_registros;
+        this.reserva_servicio = reserva_servicio;
+        this.pagos = pagos;
     }
 
-    public int getId_reserva() {
+    public long getId_reserva() {
         return id_reserva;
     }
 
-    public void setId_reserva(int id_reserva) {
+    public void setId_reserva(long id_reserva) {
         this.id_reserva = id_reserva;
     }
 
@@ -107,20 +102,12 @@ public class ReservaDTO {
         this.fecha_final = fecha_final;
     }
 
-    public double getValor_total_pagar() {
-        return valor_total_pagar;
+    public Timestamp getFecha_creacion() {
+        return fecha_creacion;
     }
 
-    public void setValor_total_pagar(double valor_total_pagar) {
-        this.valor_total_pagar = valor_total_pagar;
-    }
-
-    public double getValor_min_pagar() {
-        return valor_min_pagar;
-    }
-
-    public void setValor_min_pagar(double valor_min_pagar) {
-        this.valor_min_pagar = valor_min_pagar;
+    public void setFecha_creacion(Timestamp fecha_creacion) {
+        this.fecha_creacion = fecha_creacion;
     }
 
     public short getCant_personas() {
@@ -129,14 +116,6 @@ public class ReservaDTO {
 
     public void setCant_personas(short cant_personas) {
         this.cant_personas = cant_personas;
-    }
-
-    public short getCant_habitaciones() {
-        return cant_habitaciones;
-    }
-
-    public void setCant_habitaciones(short cant_habitaciones) {
-        this.cant_habitaciones = cant_habitaciones;
     }
 
     public ResponsableDTO getResponsable() {
@@ -155,12 +134,49 @@ public class ReservaDTO {
         this.agencia = agencia;
     }
 
-    public HotelDTO getHotel() {
-        return hotel;
+    public Collection<RecibirDTO> getHabitacion() {
+        return habitacion;
     }
 
-    public void setHotel(HotelDTO hotel) {
-        this.hotel = hotel;
+    public void setHabitacion(Collection<RecibirDTO> habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public Collection<RegistroDTO> getReserva_registros() {
+        return reserva_registros;
+    }
+
+    public void setReserva_registros(Collection<RegistroDTO> reserva_registros) {
+        this.reserva_registros = reserva_registros;
+    }
+
+    public Collection<UsarDTO> getReserva_servicio() {
+        return reserva_servicio;
+    }
+
+    public void setReserva_servicio(Collection<UsarDTO> reserva_servicio) {
+        this.reserva_servicio = reserva_servicio;
+    }
+
+    public Collection<PagoDTO> getPagos() {
+        return pagos;
+    }
+
+    public void setPagos(Collection<PagoDTO> pagos) {
+        this.pagos = pagos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ReservaDTO that = (ReservaDTO) o;
+        return id_reserva == that.id_reserva && Objects.equals(that.fecha_creacion, fecha_creacion) && cant_personas == that.cant_personas && Objects.equals(fecha_inicio, that.fecha_inicio) && Objects.equals(fecha_final, that.fecha_final) && Objects.equals(responsable, that.responsable) && Objects.equals(agencia, that.agencia) && Objects.equals(habitacion, that.habitacion) && Objects.equals(reserva_registros, that.reserva_registros) && Objects.equals(reserva_servicio, that.reserva_servicio) && Objects.equals(pagos, that.pagos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_reserva, fecha_inicio, fecha_final, fecha_creacion, cant_personas, responsable, agencia, habitacion, reserva_registros, reserva_servicio, pagos);
     }
 
     @Override
@@ -169,33 +185,14 @@ public class ReservaDTO {
                 "id_reserva=" + id_reserva +
                 ", fecha_inicio=" + fecha_inicio +
                 ", fecha_final=" + fecha_final +
-                ", valor_total_pagar=" + valor_total_pagar +
-                ", valor_min_pagar=" + valor_min_pagar +
+                ", fecha_creacion=" + fecha_creacion +
                 ", cant_personas=" + cant_personas +
-                ", cant_habitaciones=" + cant_habitaciones +
                 ", responsable=" + responsable +
                 ", agencia=" + agencia +
-                ", hotel=" + hotel +
+                ", habitacion=" + habitacion +
+                ", reserva_registros=" + reserva_registros +
+                ", reserva_servicio=" + reserva_servicio +
+                ", pagos=" + pagos +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ReservaDTO that = (ReservaDTO) o;
-        return id_reserva == that.id_reserva && Double.compare(that.valor_total_pagar, valor_total_pagar) == 0 &&
-                Double.compare(that.valor_min_pagar, valor_min_pagar) == 0 && cant_personas == that.cant_personas &&
-                cant_habitaciones == that.cant_habitaciones && Objects.equals(fecha_inicio, that.fecha_inicio) &&
-                Objects.equals(fecha_final, that.fecha_final) && Objects.equals(responsable, that.responsable) &&
-                Objects.equals(agencia, that.agencia) && Objects.equals(hotel, that.hotel);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(
-                id_reserva, fecha_inicio, fecha_final, valor_total_pagar,
-                valor_min_pagar, cant_personas, cant_habitaciones,
-                responsable, agencia, hotel);
     }
 }

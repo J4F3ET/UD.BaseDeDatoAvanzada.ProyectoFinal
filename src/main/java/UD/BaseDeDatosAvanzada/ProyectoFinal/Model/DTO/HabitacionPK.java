@@ -1,5 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -20,6 +21,7 @@ public class HabitacionPK implements Serializable{
     private short piso;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rnt_hotel", referencedColumnName = "rnt_hotel")
+    @JsonBackReference
     private HotelDTO hotelDTO;
 
     public HabitacionPK() {
@@ -66,5 +68,14 @@ public class HabitacionPK implements Serializable{
     @Override
     public int hashCode() {
         return Objects.hash(numero_habitacion, piso, hotelDTO);
+    }
+
+    @Override
+    public String toString() {
+        return "HabitacionPK{" +
+                "numero_habitacion=" + numero_habitacion +
+                ", piso=" + piso +
+                ", hotelDTO=" + hotelDTO +
+                '}';
     }
 }

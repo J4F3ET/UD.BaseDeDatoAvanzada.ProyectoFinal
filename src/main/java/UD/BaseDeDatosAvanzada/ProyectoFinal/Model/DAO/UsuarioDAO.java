@@ -1,6 +1,7 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.UsuarioINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsuarioDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
  */
 @Service
 public class UsuarioDAO {
+    @Autowired
     private UsuarioINF usuarioINF;
     public UsuarioDAO(UsuarioINF usuarioINF) {
         this.usuarioINF = usuarioINF;
