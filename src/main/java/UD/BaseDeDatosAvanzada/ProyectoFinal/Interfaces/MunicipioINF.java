@@ -11,6 +11,5 @@ import org.springframework.stereotype.Repository;
  * @Interface MunicipioINF
  * Interface que hereda de JpaRepository para poder utilizar los metodos de JPA para MunicipioDTO.
  */
-@Repository
-public interface MunicipioINF extends JpaRepository<MunicipioDTO,Long> {
-}
+
+public interface MunicipioINF extends JpaRepository<MunicipioDTO,Long>{ }

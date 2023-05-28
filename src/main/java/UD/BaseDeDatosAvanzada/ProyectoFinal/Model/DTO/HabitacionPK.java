@@ -69,4 +69,13 @@ public class HabitacionPK implements Serializable{
     public int hashCode() {
         return Objects.hash(numero_habitacion, piso, hotelDTO);
     }
+
+    @Override
+    public String toString() {
+        return "HabitacionPK{" +
+                "numero_habitacion=" + numero_habitacion +
+                ", piso=" + piso +
+                ", hotelDTO=" + hotelDTO +
+                '}';
+    }
 }

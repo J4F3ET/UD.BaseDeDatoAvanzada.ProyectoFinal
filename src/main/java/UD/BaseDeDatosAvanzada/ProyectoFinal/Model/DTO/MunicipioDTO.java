@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @Entity Clase que define los atributos para el objeto MunicipioDTO.
@@ -26,7 +27,7 @@ public class MunicipioDTO {
 
     @OneToMany(mappedBy = "municipio", fetch = FetchType.LAZY, targetEntity = AgenciaDTO.class)
     @JsonManagedReference
-    private ArrayList<AgenciaDTO> agencias = new ArrayList<>();
+    private Collection<AgenciaDTO> agencias = new ArrayList<>();
 
     public MunicipioDTO() {
     }
@@ -45,5 +46,14 @@ public class MunicipioDTO {
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "MunicipioDTO{" +
+                "id_municipio=" + id_municipio +
+                ", nombre='" + nombre + '\'' +
+                ", agencias=" + agencias +
+                '}';
     }
 }

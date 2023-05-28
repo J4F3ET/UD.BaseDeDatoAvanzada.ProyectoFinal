@@ -52,4 +52,12 @@ public class Hotel_TelefonoPK implements Serializable {
     public int hashCode() {
         return Objects.hash(telefono, hotelDTO);
     }
+
+    @Override
+    public String toString() {
+        return "Hotel_TelefonoPK{" +
+                "telefono=" + telefono +
+                ", hotelDTO=" + hotelDTO +
+                '}';
+    }
 }

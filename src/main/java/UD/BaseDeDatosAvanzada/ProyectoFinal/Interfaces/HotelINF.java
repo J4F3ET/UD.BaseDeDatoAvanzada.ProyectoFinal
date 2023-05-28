@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
  * Interface que hereda de JpaRepository para poder utilizar los metodos de JPA para HotelDTO.
  */
 @Repository
-public interface HotelINF extends JpaRepository<HotelDTO,Long> {
+public interface HotelINF extends JpaRepository<HotelDTO,Integer> {
 }
