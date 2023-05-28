@@ -27,4 +27,11 @@ public class Hotel_TelefonoDTO {
     public void setHotel_telefonoPK(Hotel_TelefonoPK id) {
         this.hotel_telefonoPK = id;
     }
+
+    @Override
+    public String toString() {
+        return "Hotel_TelefonoDTO{" +
+                "hotel_telefonoPK=" + hotel_telefonoPK +
+                '}';
+    }
 }

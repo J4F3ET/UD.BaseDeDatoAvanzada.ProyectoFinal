@@ -1,6 +1,8 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
+
 /**
  * @Entity Indica que la clase es una entidad
  * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
@@ -24,10 +26,11 @@ public class RegistroDTO {
     @Column
     private short edad;
     @Column
-    private Byte mascota;
+    private boolean mascota;
     @Column
-    private Date fecha;
+    private Timestamp fecha;
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = HabitacionDTO.class)
+    @JsonBackReference
     @JoinColumns({
                     @JoinColumn(name = "piso", referencedColumnName = "piso"),
                     @JoinColumn(name = "numero_habitacion", referencedColumnName = "numero_habitacion"),
@@ -36,11 +39,12 @@ public class RegistroDTO {
     private HabitacionDTO habitacion;
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = ReservaDTO.class)
     @JoinColumn(name = "id_reserva", referencedColumnName = "id_reserva")
+    @JsonBackReference
     private ReservaDTO reserva;
 
     public RegistroDTO() {
     }
-    public RegistroDTO(String nombre, short edad, Byte mascota, Date fecha, HabitacionDTO habitacion, ReservaDTO reserva) {
+    public RegistroDTO(String nombre, short edad, boolean mascota, Timestamp fecha, HabitacionDTO habitacion, ReservaDTO reserva) {
         this.nombre = nombre;
         this.edad = edad;
         this.mascota = mascota;
@@ -73,19 +77,19 @@ public class RegistroDTO {
         this.edad = edad;
     }
 
-    public Byte getMascota() {
+    public boolean getMascota() {
         return mascota;
     }
 
-    public void setMascota(Byte mascota) {
+    public void setMascota(boolean mascota) {
         this.mascota = mascota;
     }
 
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 

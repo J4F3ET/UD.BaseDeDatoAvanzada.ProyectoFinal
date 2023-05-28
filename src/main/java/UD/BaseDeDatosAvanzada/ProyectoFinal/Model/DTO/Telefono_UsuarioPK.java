@@ -24,9 +24,9 @@ public class Telefono_UsuarioPK implements Serializable {
     private UsuarioDTO usuario;
     public Telefono_UsuarioPK() {
     }
-    public Telefono_UsuarioPK(long telefono, long id_usuario) {
+    public Telefono_UsuarioPK(long telefono, UsuarioDTO usuario) {
         this.telefono = telefono;
-
+        this.usuario = usuario;
     }
     public long getTelefono() {
         return this.telefono;
@@ -52,5 +52,13 @@ public class Telefono_UsuarioPK implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(telefono, usuario);
+    }
+
+    @Override
+    public String toString() {
+        return "Telefono_UsuarioPK{" +
+                "telefono=" + telefono +
+                ", usuario=" + usuario +
+                '}';
     }
 }

@@ -16,13 +16,9 @@ import org.springframework.stereotype.Repository;
 public interface UsuarioINF extends JpaRepository<UsuarioDTO,Long> {
     /**
      * Metodo que permite saber si existe un UsuarioDTO con el Alias.
-     * @Query Esta etiqueta permite realizar una consulta personalizada.
-     *
-     * Consulta:
-     *           SELECT u.*
+     * @Query:   SELECT u.*
      *           FROM UsuarioDTO u
      *           WHERE u.alias = Alias;
-     *
      * @param alias Este parametro representa el alias del registro a obtener.
      * @return UsuarioDTO
      */
@@ -31,14 +27,11 @@ public interface UsuarioINF extends JpaRepository<UsuarioDTO,Long> {
 
     /**
      * Metodo que permite saber si existe un UsuarioDTO con el id y contrasena.
-     * @Query Esta etiqueta permite realizar una consulta personalizada.
-     * Consulta:
-     *          SELECT u.*
+     * @Query   SELECT u.*
      *          FROM UsuarioDTO u
      *          WHERE u.id_usuario = id_usuario AND u.contrasena = contrasena;
-     *
-     * @param id_usuario
-     * @param contrasena
+     * @param  alias Este parametro representa el alias del registro a obtener.
+     * @param contrasena Este parametro representa la contrasena del registro a obtener.
      * @return UsuarioDTO
      */
     @Query("SELECT u FROM  UsuarioDTO u WHERE u.alias = :alias AND u.password = :contrasena")
