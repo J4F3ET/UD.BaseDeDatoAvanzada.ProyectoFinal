@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class RegistroCTO {
+public class ViewRegistroCTO {
     @GetMapping({"/registro_agencia"})
     public ModelAndView registroAgencias() {
         return new ModelAndView("Registro_agencias");
