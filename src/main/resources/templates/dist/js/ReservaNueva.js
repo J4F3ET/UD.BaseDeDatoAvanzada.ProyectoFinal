@@ -13,7 +13,7 @@ Reserva.addEventListener('submit', (e) => {
     let ReservaJSON = JSON.stringify(Reserva); 
 
     
-    fetch('url_del_backend', {
+    fetch('/agencia/guardar', {
         method: 'POST',
         body: ReservaJSON
         })
