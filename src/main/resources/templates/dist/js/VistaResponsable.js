@@ -13,8 +13,9 @@
             let direccion = document.getElementById('direccion').value;
             let telefonoCelular = document.getElementById('telefono').value;
 
-            let Usuario={nombre : nombre
-                , identificacion : identificacion,
+            let Usuario={
+                nombre : nombre, 
+                identificacion : identificacion,
                 categoria : categoria,
                 correo : correo,
                 password : password,
@@ -23,11 +24,16 @@
                 telefonoCelular : telefonoCelular
             };
             let UsuarioJSON = JSON.stringify(Usuario); 
+            console.log(UsuarioJSON);
             // Puedes hacer lo que necesites con los datos recopilados, como enviarlos a través de una
             // solicitud HTTP o procesarlos en el lado del cliente.
             fetch( 'proceda a meter su URL',{
             method: "POST",
-                body: UsuarioJSON
-            })
-            window.location.href = 'ReservaNueva.html'; 
+            headers:{
+                'Content-Type': 'application/json',
+            },
+                body: UsuarioJSON 
+            });
+
+            window.location.href = './ReservaNueva.html'; 
         });
