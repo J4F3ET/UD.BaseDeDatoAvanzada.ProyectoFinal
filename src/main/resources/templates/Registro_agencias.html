@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,7 +58,7 @@
     <div class="container">
         <div class="form">
             <h2>Registre su agencia</h2>
-            <form id="DatosAgencia" action="" method="post">
+            <form id="DatosAgencia" action="" method="POST">
                 
                 <input type="text" placeholder="Nombre de la agencia" id="nombre_agencia" required>
                 <input type="text" placeholder ="rnt agencia" id="rnt_agencia" required>
@@ -68,10 +68,10 @@
                 <input type="text" placeholder="Alias" id="alias" required>
                 <input type="text" placeholder="Dirección" id="direccion" required>
                 <input type="tel" placeholder="Teléfono celular" id="telefono" required>
-                <button type="submit">Enviar</button>
+                <button id="submitAgencia">Enviar</button>
             </form>
         </div>
     </div>
-    <script src="./Registro_agencia.js"></script> 
+    <script src="./Registro_agencia.js"></script>
 </body>
 </html>

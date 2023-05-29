@@ -4,6 +4,7 @@ import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.MunicipioDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.UsuarioDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.Telefono_UsuarioDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.*;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/agencia")
+@RequestMapping(value = "/agencia")
 public class AgenciaCTO {
     @Autowired
     private AgenciaDAO agenciaDAO;
@@ -20,17 +21,17 @@ public class AgenciaCTO {
     private UsuarioDAO usuarioDAO;
     @Autowired
     private MunicipioDAO municipioDAO;
-
     @Autowired
     private Telefono_UsuarioDAO telefono_usuarioDAO;
-    @PostMapping("/guardar")
-    public ResponseEntity<String> registrarAgencia(@RequestBody AgenciaUsuarioDTO agenciaUsuarioDTO){
+    @PostMapping(value ="/guardar")
+    public ResponseEntity<String> registrarAgencia(@RequestBody  AgenciaUsuarioDTO agenciaUsuarioDTO){
+        System.out.println(agenciaUsuarioDTO.toString());
         UsuarioDTO usuarioDTO = new UsuarioDTO();
-
         AgenciaDTO agenciaDTO = new AgenciaDTO();
         Optional<MunicipioDTO> municipioOPT =  this.municipioDAO.findById(Long.parseLong(agenciaUsuarioDTO.getMunicipio()));
         MunicipioDTO municipioDTO = municipioOPT.orElse(null);
         if (municipioDTO==null){
+            System.out.println("Municipio no encontrado");
             return ResponseEntity.badRequest().build();
         }
         usuarioDTO.setAlias(agenciaUsuarioDTO.getAlias());
