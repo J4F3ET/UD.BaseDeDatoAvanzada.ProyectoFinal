@@ -39,8 +39,7 @@ public class UsuarioDTO {
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(long id_usuario, String nombre, String correo, String password, String alias, String direccion) {
-        this.id = id_usuario;
+    public UsuarioDTO(String nombre, String correo, String password, String alias, String direccion) {
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;

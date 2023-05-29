@@ -11,10 +11,17 @@
             let tieneMascota = document.getElementById('mascota').value;
             let cantidadPersonas = document.getElementById('cantidad-personas').value;
 
-            let Acompañante = {nombre:nombre, identificacion:identificacion,fecha:fecha,edad:edad,tieneMascota:tieneMascota,cantidadPersonas:cantidadPersonas}; 
+            let Acompañante = {
+                nombre:nombre,
+                identificacion:identificacion,
+                fecha:fecha,
+                edad:edad,
+                tieneMascota:tieneMascota,
+                cantidadPersonas:cantidadPersonas
+            };
             let AcompañanteJSON = JSON.stringify(Acompañante); 
 
-           fetch('URL ',{
+           fetch('/registro/guardar ',{
             method:'POST',
             body : AcompañanteJSON 
            })

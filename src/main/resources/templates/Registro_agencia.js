@@ -26,7 +26,7 @@ form.addEventListener('submit', (e) => {
         telefono:telefono};
     let AgenciaJSON = JSON.stringify(Agencia);    
 
-    fetch('proceda a meter su URL ',{
+    fetch('/agencia/guardar',{
         method: 'POST',
         body : AgenciaJSON
     })
