@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/css/main.css">
+    <title>Reserva</title>
+<body> 
+    <div class="form invisible">
+        <h1> Ingrese los datos de la reservación</h1>
+        <form id = "form-reserva" action="" method="post" data-form-reserva>
+            <input type="text" placeholder="cantidad de personas" required data-form-cant_personas>
+            <input type="text" placeholder="cantidad de habitaciones" required data-form-cant_habitaciones>
+            <label for="fecha_ingreso">fecha de ingreso</label>
+            <input type="date" id="fecha_ingreso" required data-form-fecha_inicio>
+            <label for="fecha_salida">fecha de entrega de la habitacion</label>
+            <input type="date" id="fecha_salida" required data-from-fecha_final>
+            <p>Tipo de habitacion</p> 
+            <label for="Penthouse">Penthouse</label>
+            <input type="radio" id="Penthouse" name="radio_options" required data-form-tipo_habitacion>
+            <label for="habitacion-familiar">habitacion-familiar</label>
+            <input type="radio" id="habitacion-familiar" name="radio_options" required data-form-tipo_habitacion>
+            <label for="habitacion-doble">habitacion doble</label>
+            <input type="radio" id="habitación-doble" name="radio_options" required data-form-tipo_habitacion>
+            <label for="habitacion-sencilla">habitacion-sencilla</label>
+            <input type="radio" id="habitación-sencilla" name="radio_options" required data-form-tipo_habitacion>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="./dist/js/Reserva.js"></script>
+<!-- Code injected by live-server -->
+</body>
+</html>

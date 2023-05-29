@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/css/main.css">
+    <title>registro</title>
+
+    <body>
+        <div>
+            <h1>Registra a tus acompañantes</h1>
+            <form id="form-registro" action="" method="post" data-form-registro>
+                <input type="text" placeholder="identificacion" required data-form-id_registro> 
+                <input type="text" placeholder="nombre " required data-form-id_nombre>
+                <input type="text" placeholder="edad" required data-form-edad>
+                <label for="fecha_registro">fecha de registro</label>
+                <input type="date" id="fecha_registro" required data-form-fecha>
+                <h2>¿trae usted mascotas?</h2>
+                <label for="si">si</label>
+                <input type="radio" id="si" name="radio-options" required data-form-mascotas>
+                <label for="no">no</label>
+                <input type="radio" id="no" name="radio-options" required data-form-mascotas>
+                
+            </form>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="./dist/js/registro.js"></script>
+    </body>
