@@ -6,7 +6,6 @@ import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.HabitacionDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.RegistroDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.ReservaDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.RegistroDTO;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

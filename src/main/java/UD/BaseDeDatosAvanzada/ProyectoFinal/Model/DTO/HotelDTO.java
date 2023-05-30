@@ -3,6 +3,7 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,6 +35,8 @@ public class HotelDTO {
     private short anio_inauguracion;
     @Column
     private float categoria;
+    @Column
+    private Timestamp fecha_actualizacion;
     @OneToMany(mappedBy = "hotel_telefonoPK.hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Collection<Hotel_TelefonoDTO> telefonos = new ArrayList<Hotel_TelefonoDTO>();
@@ -44,16 +47,48 @@ public class HotelDTO {
     private int antiguedad;
     public HotelDTO() {
     }
-    public HotelDTO(int rnt_hotel, String nombre, String direccion, short anio_inauguracion, float categoria) {
+
+    public HotelDTO(int rnt_hotel, String nombre, String direccion, short anio_inauguracion, float categoria, Timestamp fecha_actualizacion, Collection<Hotel_TelefonoDTO> telefonos, Collection<HabitacionDTO> habitaciones, int antiguedad) {
         this.rnt_hotel = rnt_hotel;
         this.nombre = nombre;
         this.direccion = direccion;
         this.anio_inauguracion = anio_inauguracion;
         this.categoria = categoria;
-        this.antiguedad = anio_inauguracion - (LocalDate.now().getYear());
-
+        this.fecha_actualizacion = fecha_actualizacion;
+        this.telefonos = telefonos;
+        this.habitaciones = habitaciones;
+        this.antiguedad = antiguedad;
     }
-    public long getRnt_hotel() {
+
+    @Override
+    public String toString() {
+        return "HotelDTO{" +
+                "rnt_hotel=" + rnt_hotel +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", anio_inauguracion=" + anio_inauguracion +
+                ", categoria=" + categoria +
+                ", fecha_actualizacion=" + fecha_actualizacion +
+                ", telefonos=" + telefonos +
+                ", habitaciones=" + habitaciones +
+                ", antiguedad=" + antiguedad +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HotelDTO hotelDTO = (HotelDTO) o;
+        return rnt_hotel == hotelDTO.rnt_hotel && anio_inauguracion == hotelDTO.anio_inauguracion && Float.compare(hotelDTO.categoria, categoria) == 0 && antiguedad == hotelDTO.antiguedad && Objects.equals(nombre, hotelDTO.nombre) && Objects.equals(direccion, hotelDTO.direccion) && Objects.equals(fecha_actualizacion, hotelDTO.fecha_actualizacion) && Objects.equals(telefonos, hotelDTO.telefonos) && Objects.equals(habitaciones, hotelDTO.habitaciones);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rnt_hotel, nombre, direccion, anio_inauguracion, categoria, fecha_actualizacion, telefonos, habitaciones, antiguedad);
+    }
+
+    public int getRnt_hotel() {
         return rnt_hotel;
     }
 
@@ -93,54 +128,35 @@ public class HotelDTO {
         this.categoria = categoria;
     }
 
-    public int getAntiguedad() {
-        return antiguedad;
+    public Timestamp getFecha_actualizacion() {
+        return fecha_actualizacion;
     }
 
-    public void setAntiguedad(int antiguedad) {
-        this.antiguedad = antiguedad;
-    }
-
-    public Collection<HabitacionDTO> getHabitaciones() {
-        return habitaciones;
-    }
-
-    public void setHabitaciones(ArrayList<HabitacionDTO> habitaciones) {
-        this.habitaciones = habitaciones;
+    public void setFecha_actualizacion(Timestamp fecha_actualizacion) {
+        this.fecha_actualizacion = fecha_actualizacion;
     }
 
     public Collection<Hotel_TelefonoDTO> getTelefonos() {
         return telefonos;
     }
 
-    public void setTelefonos(ArrayList<Hotel_TelefonoDTO> telefonos) {
+    public void setTelefonos(Collection<Hotel_TelefonoDTO> telefonos) {
         this.telefonos = telefonos;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HotelDTO hotelDTO = (HotelDTO) o;
-        return rnt_hotel == hotelDTO.rnt_hotel && anio_inauguracion == hotelDTO.anio_inauguracion && Float.compare(hotelDTO.categoria, categoria) == 0 && antiguedad == hotelDTO.antiguedad && Objects.equals(nombre, hotelDTO.nombre) && Objects.equals(direccion, hotelDTO.direccion) && Objects.equals(telefonos, hotelDTO.telefonos) && Objects.equals(habitaciones, hotelDTO.habitaciones);
+    public Collection<HabitacionDTO> getHabitaciones() {
+        return habitaciones;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(rnt_hotel, nombre, direccion, anio_inauguracion, categoria, telefonos, habitaciones, antiguedad);
+    public void setHabitaciones(Collection<HabitacionDTO> habitaciones) {
+        this.habitaciones = habitaciones;
     }
 
-    @Override
-    public String toString() {
-        return "HotelDTO{" +
-                "rnt_hotel=" + rnt_hotel +
-                ", nombre='" + nombre + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", anio_inauguracion=" + anio_inauguracion +
-                ", categoria=" + categoria +
-                ", telefonos=" + telefonos +
-                ", habitaciones=" + habitaciones +
-                ", antiguedad=" + antiguedad +
-                '}';
+    public int getAntiguedad() {
+        return antiguedad;
+    }
+
+    public void setAntiguedad(int antiguedad) {
+        this.antiguedad = antiguedad;
     }
 }

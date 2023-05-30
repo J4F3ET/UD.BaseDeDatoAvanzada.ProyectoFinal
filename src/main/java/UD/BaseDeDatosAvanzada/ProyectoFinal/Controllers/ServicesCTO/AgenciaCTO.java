@@ -4,7 +4,6 @@ import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.MunicipioDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.UsuarioDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.Telefono_UsuarioDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.*;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

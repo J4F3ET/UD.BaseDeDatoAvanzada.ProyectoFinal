@@ -27,7 +27,7 @@
             console.log(UsuarioJSON);
             // Puedes hacer lo que necesites con los datos recopilados, como enviarlos a través de una
             // solicitud HTTP o procesarlos en el lado del cliente.
-            fetch( 'proceda a meter su URL',{
+            fetch( '/responsable/guardar',{
             method: "POST",
             headers:{
                 'Content-Type': 'application/json',
