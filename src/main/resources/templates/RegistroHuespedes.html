@@ -61,7 +61,11 @@
         <div class="form">
             <h2> Registro acompañantes</h2>
             <form id="DatosAcompañantes" >
+                <input type="text" placeholder="identificacion de reserva" id="id_reserva" required>
+                <input type="number" placeholder="Numero de habitacion" id="numero_habitacion" required>
+                <input type="text" placeholder="rnt hotel" id="rnt_hotel" required>
                 <input type="text" placeholder="Nombre" id="nombre" required>
+                <input type="number" placeholder="piso de alojamiento" id="piso" required>
                 <input type="text" placeholder="Identificación" id="identificacion" required>
                 <input type="time " placeholder="Fecha" id="fecha" value="" required>
                 <input type="number" placeholder="Edad" id="edad" required>
@@ -70,10 +74,11 @@
                     <option value="Si">Sí</option>
                     <option value="No">No</option>
                 </select>
+                <p></p>
                 <button type="submit">Registrar</button>
             </form>
         </div>
     </div>
-<script src="/dist/js/RegistroHuesped.js"></script>
+<script src="/src/main/resources/static/dist/js/RegistroHuesped.js"></script>
 </body>
 </html>

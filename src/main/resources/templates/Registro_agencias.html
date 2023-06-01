@@ -60,7 +60,7 @@
         <div class="form">
             <h2>Registre su agencia</h2>
             <form id="DatosAgencia" >
-                
+                <div>
                 <input type="text" placeholder="Nombre de la agencia" id="nombre_agencia" required>
                 <input type="text" placeholder ="rnt agencia" id="rnt_agencia" required>
                 <input type="text" placeholder="Municipio" id="municipio" rquired>
@@ -70,9 +70,19 @@
                 <input type="text" placeholder="Dirección" id="direccion" required>
                 <input type="tel" placeholder="Teléfono celular" id="telefono" required>
                 <button id="submitAgencia">Enviar</button>
+            </div>
+            <P></P>
+            <div>
+                <label for="crear responsable">¿desea crear un responsable?</label>
+            </div>
+            <P></P>
+            <div>
+                <button id="crear_responsable">Crear</button>
+            </div>
+            </div>
             </form>
         </div>
     </div>
-    <script src="/src/main/resources/templates/dist/boostrap/js/Registro_agencia.js"></script>
+    <script src="/src/main/resources/static/dist/js/Registro_agencia.js"></script>
 </body>
 </html>

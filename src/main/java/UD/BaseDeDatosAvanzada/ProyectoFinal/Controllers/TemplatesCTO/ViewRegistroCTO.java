@@ -26,4 +26,8 @@ public class ViewRegistroCTO {
     public ModelAndView registro() {
         return new ModelAndView("VentanaLogeo");
     }
+    @GetMapping({"/registro_responsable"})
+    public ModelAndView registroResponsable() {
+        return new ModelAndView("VistaResponsable");
+    }
 }
