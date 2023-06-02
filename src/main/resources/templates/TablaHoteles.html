@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tabla hoteles</title>
+  <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+</head>
+<body>
+          <style>
+              /* Estilos CSS */
+              body {
+                  font-family: Arial, sans-serif;
+                  margin: 20px;
+              }
+      
+              h1 {
+                  color: #333;
+              }
+      
+              table {
+                  border-collapse: collapse;
+                  width: 100%;
+                  margin-top: 20px;
+              }
+      
+              th, td {
+                  border: 1px solid #ddd;
+                  padding: 8px;
+                  text-align: left;
+              }
+      
+              th {
+                  background-color: #f2f2f2;
+              }
+      
+              .btn-reservar {
+                  background-color: #4CAF50;
+                  color: white;
+                  padding: 6px 12px;
+                  border: none;
+                  cursor: pointer;
+                  border-radius: 4px;
+              }
+      
+              .btn-reservar:hover {
+                  background-color: #45a049;
+              }
+          </style>
+      </head>
+      <body>
+          <h1>Hotel Disponible</h1>
+      
+          <table>
+            <caption>hoteles</caption>
+              <tr>
+                  <th>RNT Hotel</th>
+                  <th>Nombre</th>
+                  <th>Dirección</th>
+                  <th>Año Inauguración</th>
+                  <th>Categoría</th>
+                  <th>Antigüedad</th>
+                  <th>Telefono</th>
+                  <th></th>
+              </tr>
+              <tr>
+                  <td id="rnt_hotel"></td>
+                  <td id="nombre"></td>
+                  <td id="direccion"></td>
+                  <td id="anio_inauguracion"></td>
+                  <td id="categoria"></td>
+                  <td id="antiguedad"></td>
+                  <td id="telefono"></td>
+                  <td id="reservar"></td>
+
+              </tr>
+          </table>
+      
+          <script src="/src/main/resources/static/dist/js/TablaHoteles.js"></script>     
+  <script src="/src/main/resources/static/dist/css/bootstrap.min.css"></script> 
+</body>
+</html>

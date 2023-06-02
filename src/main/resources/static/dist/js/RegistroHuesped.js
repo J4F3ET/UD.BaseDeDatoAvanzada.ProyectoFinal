@@ -9,7 +9,7 @@
             let fecha = new Date().toLocaleDateString(); // Obtener la fecha actual
             let edad = document.getElementById('edad').value;
             let tieneMascota = document.getElementById('mascota').value;
-            let cantidadPersonas = document.getElementById('cantidad-personas').value;
+            let cantidadPersonas = document.getElementById('cantidad_personas').value;
 
             let Acompañante = {
                 nombre:nombre,
@@ -23,7 +23,13 @@
 
            fetch('/registro/guardar ',{
             method:'POST',
+            headers:{ 
+
+                'Content-Type': 'application/json',
+            },
+        
             body : AcompañanteJSON 
+            
            })
 
         })

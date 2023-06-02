@@ -21,6 +21,6 @@ login.addEventListener('submit', (e) => {
 });
 
 document.getElementById("Registrar").addEventListener("click", function(){
-window.location.href = 'Seleccionador_de_logeo.html';   
+window.location.href ='./Seleccionador_de_logeo.html';   
     
 }); 
