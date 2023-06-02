@@ -27,7 +27,11 @@
             console.log(UsuarioJSON);
             // Puedes hacer lo que necesites con los datos recopilados, como enviarlos a través de una
             // solicitud HTTP o procesarlos en el lado del cliente.
+<<<<<<<< HEAD:src/main/resources/templates/dist/boostrap/js/VistaResponsable.js
+            fetch( 'Rponsable/guardar',{
+========
             fetch( '/responsable/guardar',{
+>>>>>>>> dc7884486dcac2a6548d73a30ff2bbcfea1135a2:src/main/resources/static/dist/js/VistaResponsable.js
             method: "POST",
             headers:{
                 'Content-Type': 'application/json',

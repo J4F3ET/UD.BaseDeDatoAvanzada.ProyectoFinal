@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Agencia</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,14 +53,14 @@
             cursor: pointer;
         }
     </style>
-    <title>Registro Agencia</title>
+   
 </head>
 <body>
     <div class="container">
         <div class="form">
             <h2>Registre su agencia</h2>
-            <form id="DatosAgencia" action="" method="POST">
-                
+            <form id="DatosAgencia" >
+                <div>
                 <input type="text" placeholder="Nombre de la agencia" id="nombre_agencia" required>
                 <input type="text" placeholder ="rnt agencia" id="rnt_agencia" required>
                 <input type="text" placeholder="Municipio" id="municipio" rquired>
@@ -69,9 +70,19 @@
                 <input type="text" placeholder="Dirección" id="direccion" required>
                 <input type="tel" placeholder="Teléfono celular" id="telefono" required>
                 <button id="submitAgencia">Enviar</button>
+            </div>
+            <P></P>
+            <div>
+                <label for="crear responsable">¿desea crear un responsable?</label>
+            </div>
+            <P></P>
+            <div>
+                <button id="crear_responsable">Crear</button>
+            </div>
+            </div>
             </form>
         </div>
     </div>
-    <script src="./Registro_agencia.js"></script>
+    <script src="/src/main/resources/static/dist/js/Registro_agencia.js"></script>
 </body>
 </html>

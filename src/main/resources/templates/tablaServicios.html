@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Tabla de Reserva de Servicios</title>
+      <style>
+     body {
+                  font-family: Arial, sans-serif;
+                  margin: 20px;
+              }
+      
+              h1 {
+                  color: #333;
+              }
+      
+              table {
+                  border-collapse: collapse;
+                  width: 100%;
+                  margin-top: 20px;
+              }
+      
+              th, td {
+                  border: 1px solid #ddd;
+                  padding: 8px;
+                  text-align: left;
+              }
+      
+              th {
+                  background-color: #f2f2f2;
+              }
+      
+              .btn-reservar {
+                  background-color: #4CAF50;
+                  color: white;
+                  padding: 6px 12px;
+                  border: none;
+                  cursor: pointer;
+                  border-radius: 4px;
+              }
+      
+              .btn-reservar:hover {
+                  background-color: #45a049;
+              }
+      </style>
+    </head>
+    <body>
+      <h1>Tabla de Reserva de Servicios</h1>
+      <table id="reserva-servicios-table">
+        <thead>
+          <tr>
+            <th>ID Reserva</th>
+            <th>ID Servicio</th>
+            <th>Nombre</th>
+            <th>Costo</th>
+          </tr>
+        </thead>
+        <tbody id="reserva-servicios-body"></tbody>
+      </table>
+    
+      <script>
+        // Obtener los datos de la API REST
+        fetch('http://localhost:3000/reserva-servicios')
+          .then(response => response.json())
+          .then(data => {
+            // Construir las filas de la tabla con los datos obtenidos
+            const reservaServiciosTable = document.getElementById('reserva-servicios-body');
+            data.forEach(reservaServicio => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                <td>${reservaServicio.id_reserva}</td>
+                <td>${reservaServicio.id_servicio}</td>
+                <td>${reservaServicio.nombre}</td>
+                <td>${reservaServicio.costo}</td>
+              `;
+              reservaServiciosTable.appendChild(row);
+            });
+          })
+          .catch(error => {
+            console.error('Error al obtener los datos de la API:', error);
+          });
+      </script>
+    </body>
+    </html>
+    

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Tabla de Reservas</title>
+      <style>
+        body {
+                  font-family: Arial, sans-serif;
+                  margin: 20px;
+              }
+      
+              h1 {
+                  color: #333;
+              }
+      
+              table {
+                  border-collapse: collapse;
+                  width: 100%;
+                  margin-top: 20px;
+              }
+      
+              th, td {
+                  border: 1px solid #ddd;
+                  padding: 8px;
+                  text-align: left;
+              }
+      
+              th {
+                  background-color: #f2f2f2;
+              }
+      
+              .btn-reservar {
+                  background-color: #4CAF50;
+                  color: white;
+                  padding: 6px 12px;
+                  border: none;
+                  cursor: pointer;
+                  border-radius: 4px;
+              }
+      
+              .btn-reservar:hover {
+                  background-color: #45a049;
+              }
+      </style>
+    </head>
+    <body>
+      <h1>Tabla de Reservas</h1>
+      <table id="reservas-table">
+        <thead>
+          <tr>
+            <th>ID Reserva</th>
+            <th>Cantidad de Personas</th>
+            <th>Fecha de Creación</th>
+            <th>Fecha Final</th>
+            <th>Fecha de Inicio</th>
+            <th>RNT Agencia</th>
+            <th>ID Usuario Agencia</th>
+            <th>Identificación</th>
+            <th>ID Usuario Responsable</th>
+          </tr>
+        </thead>
+        <tbody id="reservas-body"></tbody>
+      </table>
+    
+      <script>
+        // Obtener los datos de la API REST
+        fetch('http://localhost:3000/reservas')
+          .then(response => response.json())
+          .then(data => {
+            // Construir las filas de la tabla con los datos obtenidos
+            const reservasTable = document.getElementById('reservas-body');
+            data.forEach(reserva => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                <td>${reserva.id_reserva}</td>
+                <td>${reserva.cant_personas}</td>
+                <td>${reserva.fecha_creacion}</td>
+                <td>${reserva.fecha_final}</td>
+                <td>${reserva.fecha_inicio}</td>
+                <td>${reserva.rnt_agencia}</td>
+                <td>${reserva.id_usuario_agencia}</td>
+                <td>${reserva.identificacion}</td>
+                <td>${reserva.id_usuario_responsable}</td>
+              `;
+              reservasTable.appendChild(row);
+            });
+          })
+          .catch(error => {
+            console.error('Error al obtener los datos de la API:', error);
+          });
+      </script>
+    </body>
+    </html>
+    

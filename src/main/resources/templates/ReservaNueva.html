@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Habitación</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,28 +52,47 @@
             border-radius: 4px;
             cursor: pointer;
         }
+        label {
+            font-weight: bold;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+             font-size: 16px;
+        }
     </style>
-    <title>Reservar Habitación</title>
 </head>
 <body>
     <div class="container">
         <div class="form">
             <h2>Reservar Habitación</h2>
-            <form id="Reserva" action="" method="post">
-                <input type="date" placeholder="Fecha de ingreso" id="fecha-ingreso" required>
-                <input type="date" placeholder="Fecha de salida" id="fecha-salida" required>
-                <input type="number" placeholder="Cantidad de personas" id="cantidad-personas" required>
-                <select id="tipo-habitacion" required>
-                    <option value="">Seleccionar tipo de habitación</option>
-                    <option value="sencilla">Sencilla</option>
-                    <option value="matrimonial">Matrimonial</option>
-                    <option value="familiar">Familiar</option>
-                    <option value="penthouse">Penthouse</option>
-                </select>
-                <button type="submit">Reservar</button>
+            <form id="Reserva" >
+                <label for="id_reserva">Numero de reserva</label>
+                <p></p>
+                <input type="text" id="id_reserva" placeholder="ID Reserva" >
+                <p></p>
+                <label for="cantidad de habitaciones">cantidad de habitaciones</label>
+                <p></p>
+                <input type="number" placeholder="canditad de habitaciones requeridas" id="cant_habitaciones">
+                <p></p>
+                <label for="fecha de creacion de la reserva"> fecha de creacion de la reserva</label>
+                <p></p>
+                <input type="date" placeholder="fecha de creacion" id="fecha_creacion">
+                <p></p>
+                <label for=" fecha-ingreso">Fecha ingreso</label>
+                <p></p>
+                <input type="date" placeholder="Fecha de ingreso" id="fecha_ingreso" required>
+                <p></p>
+                <label for=" fecha-salida">Fecha salida</label>
+                <p></p>
+                <input type="date" placeholder="Fecha de salida" id="fecha_salida" required>
+                <p></p>
+                <label for=" cantidad-personas">Cantidad de acompañantes</label>
+                <p></p>
+                <input type="number" placeholder="Cantidad de personas" id="cant_personas" required>
+                <p></p>
+                <p></p>
+                <button type="submit">Elegir hotel</button>
             </form>
         </div>
     </div>
-    <script src="ReservaNueva.js"></script>  
+    <script src="/src/main/resources/static/dist/js/ReservaNueva.js"></script>  
 </body>
 </html>
