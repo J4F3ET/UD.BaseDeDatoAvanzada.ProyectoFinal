@@ -1,7 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers.ServicesCTO.Util;
 
 import java.util.Collection;
-import java.util.List;
 
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioDTO;
 
