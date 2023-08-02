@@ -1,131 +1,122 @@
-package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
-import java.util.Collection;
-import java.util.ArrayList;
-/**
- * @Entity Clase que define los atributos para el objeto UsuarioDTO.
- * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
- * @Id indica que el atributo es una clave primaria
- * @GeneratedValue indica que el atributo es autogenerado
- * @OneToMany indica que la clase es una relación uno a muchos
- * @Column indica el nombre de la columna en la tabla
- * @JsonManagedReference indica que la clase es una relación uno a muchos, y que es la clase padre, por lo que se serializa
- * y se deserializa normalmente y la clase hija se serializa y deserializa como un id. Tambien se usa para evitar errores
- * de recursividad.
- * Clase que representa la tabla Usuario de la base de datos.
- */
-@Entity
-@Table(name = "usuario")
-public class UsuarioDTO {
+    package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
-    private long id;
-    @Column(length = 50)
-    private String nombre;
-    @Column(name = "correo_electronico",length = 50)
-    private String correo;
-    @Column(length = 50)
-    private String password;
-    @Column(length = 50)
-    private String alias;
-    @Column(length = 100)
-    private String direccion;
-    @OneToMany(mappedBy = "telefono_usuarioPK.usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private Collection<Telefono_UsuarioDTO> telefonos = new ArrayList<>();
-    public UsuarioDTO() {
-    }
+    import jakarta.persistence.*;
+    import java.util.Collection;
+    import java.util.ArrayList;
+    @Entity
+    @Table(name = "usuario")
+    public class UsuarioDTO {
 
-    public UsuarioDTO(String nombre, String correo, String password, String alias, String direccion) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.password = password;
-        this.alias = alias;
-        this.direccion = direccion;
-    }
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "usuario_id_usuario_seq")
+        @SequenceGenerator(name = "usuario_id_usuario_seq", sequenceName = "usuario_id_usuario_seq", allocationSize = 1)
+        @Column(name = "id_usuario")
+        private long id;
+        @Column(length = 50)
+        private String nombre;
+        @Column(name = "correo_electronico",length = 50)
+        private String correo;
+        @Column(length = 50)
+        private String password;
+        @Column(length = 50)
+        private String alias;   
+        @Column(length = 100)
+        private String direccion;
+        @OneToMany(mappedBy = "telefono_usuarioPK.usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+        @JsonIgnore
+        private Collection<Telefono_UsuarioDTO> telefonos;
 
-    public long getId_usuario() {
-        return id;
-    }
+        public UsuarioDTO() {
+        }
 
-    public void setId_usuario(long id_usuario) {
-        this.id = id_usuario;
-    }
+        public UsuarioDTO(String nombre, String correo, String password, String alias, String direccion) {
+            this.nombre = nombre;
+            this.correo = correo;
+            this.password = password;
+            this.alias = alias;
+            this.direccion = direccion;
+        }
 
-    public String getNombre() {
-        return nombre;
-    }
+        public long getId_usuario() {
+            return id;
+        }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+        public void setId_usuario(long id_usuario) {
+            this.id = id_usuario;
+        }
 
-    public String getCorreo() {
-        return correo;
-    }
+        public String getNombre() {
+            return nombre;
+        }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
 
-    public String getPassword() {
-        return password;
-    }
+        public String getCorreo() {
+            return correo;
+        }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+        public void setCorreo(String correo) {
+            this.correo = correo;
+        }
 
-    public String getAlias() {
-        return alias;
-    }
+        public String getPassword() {
+            return password;
+        }
 
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
+        public void setPassword(String password) {
+            this.password = password;
+        }
 
-    public String getDireccion() {
-        return direccion;
-    }
+        public String getAlias() {
+            return alias;
+        }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+        public void setAlias(String alias) {
+            this.alias = alias;
+        }
 
-    public Collection<Telefono_UsuarioDTO> getTelefonos() {
-        return telefonos;
-    }
+        public String getDireccion() {
+            return direccion;
+        }
 
-    public void setTelefonos(ArrayList<Telefono_UsuarioDTO> telefonos) {
-        this.telefonos = telefonos;
-    }
+        public void setDireccion(String direccion) {
+            this.direccion = direccion;
+        }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof UsuarioDTO) {
-            UsuarioDTO tmpPersona = (UsuarioDTO) obj;
-            if (this.id == tmpPersona.id) {
-                return true;
+        public Collection<Telefono_UsuarioDTO> getTelefonos() {
+            return telefonos;
+        }
+
+        public void setTelefonos(ArrayList<Telefono_UsuarioDTO> telefonos) {
+            this.telefonos = telefonos;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof UsuarioDTO) {
+                UsuarioDTO tmpPersona = (UsuarioDTO) obj;
+                if (this.id == tmpPersona.id) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
-        } else {
-            return false;
+        }
+
+        @Override
+        public String toString() {
+            return "UsuarioDTO{" +
+                    "id=" + id +
+                    ", nombre='" + nombre + '\'' +
+                    ", correo='" + correo + '\'' +
+                    ", password='" + password + '\'' +
+                    ", alias='" + alias + '\'' +
+                    ", direccion='" + direccion + '\'' +
+                    '}';
         }
     }
-
-    @Override
-    public String toString() {
-        return "UsuarioDTO{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", correo='" + correo + '\'' +
-                ", password='" + password + '\'' +
-                ", alias='" + alias + '\'' +
-                ", direccion='" + direccion + '\'' +
-                '}';
-    }
-}

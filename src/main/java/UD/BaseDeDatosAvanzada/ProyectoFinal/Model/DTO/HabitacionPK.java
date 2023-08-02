@@ -5,13 +5,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-/**
- * @Embeddable es una anotación que se utiliza para definir una clase cuyos atributos representan los campos de una clave primaria compuesta.
- * @Column indica que el atributo es un campo de la tabla
- * @ManyToOne indica la relación muchos a uno
- * @JoinColumn indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
- * Esta clase representa a la clave primaria de la tabla habitacion
- */
+
 @Embeddable
 public class HabitacionPK implements Serializable{
     private static final long serialVersionUID = 1L;

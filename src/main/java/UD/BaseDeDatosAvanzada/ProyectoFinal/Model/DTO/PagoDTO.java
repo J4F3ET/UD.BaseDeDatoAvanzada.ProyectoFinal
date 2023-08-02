@@ -14,11 +14,11 @@ public class PagoDTO {
     @EmbeddedId
     private PagoPK id;
     @Column(name = "pago_total")
-    private int pagototal;
+    private double pagototal;
     @Column(name = "fecha")
     private Date fecha;
     @Column(name = "valor")
-    private int valor;
+    private double valor;
 
     public PagoDTO() {
     }
@@ -38,11 +38,11 @@ public class PagoDTO {
         this.id = id;
     }
 
-    public int getPagototal() {
+    public double getPagototal() {
         return pagototal;
     }
 
-    public void setPagototal(int pagototal) {
+    public void setPagototal(double pagototal) {
         this.pagototal = pagototal;
     }
 
@@ -54,11 +54,11 @@ public class PagoDTO {
         this.fecha = fecha;
     }
 
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 

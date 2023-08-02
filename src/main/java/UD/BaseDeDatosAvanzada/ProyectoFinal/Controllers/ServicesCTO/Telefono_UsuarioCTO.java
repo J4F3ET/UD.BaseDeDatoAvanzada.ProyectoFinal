@@ -1,5 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers.ServicesCTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioPK;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsuarioDTO;
 
 import java.util.ArrayList;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers.ServicesCTO.Util.TelefonoRequestUser;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.Telefono_UsuarioDAO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.UsuarioDAO;
 
 @RestController
 @RequestMapping("/telefono_usuario")
@@ -21,20 +21,25 @@ public class Telefono_UsuarioCTO {
     private Telefono_UsuarioDAO telefono_usuarioDAO;
 
     @PostMapping("/listar")
-    public Optional<Telefono_UsuarioDTO> listar(@RequestBody Telefono_UsuarioDTO telefono_usuarioDTO){
-        return this.telefono_usuarioDAO.findById(telefono_usuarioDTO.getId());
-    }
-    @PostMapping("/guardar")
-    public  Collection<Telefono_UsuarioDTO> guardar(@RequestBody TelefonoRequestUser request){
-        System.out.print("\n----------PRUEBAAAA--------------\n");
-        System.out.print("\n----------------------------\n"+request.toString()+"\n------------------------\n");
-        Collection<Telefono_UsuarioDTO> telefonos = request.getTelefonos();
-        Collection<Telefono_UsuarioDTO> response = new ArrayList<>();
-        telefonos.forEach(telefono -> {
-            System.out.print("\n----------------------------\n"+telefono.toString()+"\n------------------------\n");
-            response.add(this.telefono_usuarioDAO.save(telefono));
+    public ArrayList<String>  listar(@RequestBody UsuarioDTO user){
+        ArrayList<String> response = new ArrayList<>();
+        telefono_usuarioDAO.findByUser(user.getId_usuario()).forEach(telefono -> {
+            response.add(""+telefono.getId().getTelefono());
         });
         return response;
     }
-
+    @PostMapping("/guardar")
+    public  Collection<Telefono_UsuarioDTO> guardar(@RequestBody TelefonoRequestUser request){
+        Collection<Telefono_UsuarioDTO> telefonos = request.getTelefonos();
+        Collection<Telefono_UsuarioDTO> response = new ArrayList<>();
+        telefonos.forEach(telefono -> {
+            if(telefono.getId().getTelefono()!=0 || telefono.getId().getUsuario() != null){
+                response.add(this.telefono_usuarioDAO.save(telefono));
+            }else{
+                response.add(new Telefono_UsuarioDTO(new Telefono_UsuarioPK(0,new UsuarioDTO())));
+            }
+            
+        });
+        return response;
+    }
 }

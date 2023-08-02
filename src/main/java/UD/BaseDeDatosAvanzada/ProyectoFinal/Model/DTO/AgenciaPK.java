@@ -4,15 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*    ;
 import java.io.Serializable;
 import java.util.Objects;
-/**
- * @Embeddable indica que la clase puede ser usada como una clave primaria compuesta
- * @Column indica que el atributo es un campo de la tabla
- * @ManyToOne indica la relación muchos a uno
- * @JoinColumn indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
- * @Target indica el tipo de clase que puede ser anotada con esta anotación
- * @Inherited indica que la anotación puede ser heredada
- * Clase que representa a la clave primaria de la tabla agencia
- */
+
 @Embeddable
 public class AgenciaPK implements Serializable {
     private static final long serialVersionUID = 1L;

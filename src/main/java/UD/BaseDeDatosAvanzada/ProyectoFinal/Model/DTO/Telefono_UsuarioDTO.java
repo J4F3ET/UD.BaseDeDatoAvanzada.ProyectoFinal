@@ -4,17 +4,13 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
-/**
- * @Entity Clase que define los atributos para el objeto Telefono_UsuarioDTO.
- * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
- * @EmbeddedId indica que la clase es una clave primaria compuesta
- * Clase que define los atributos para el objeto Telefono_UsuarioDTO.
- */
 @Entity
 @Table(name = "telefono_usuario")
 public class Telefono_UsuarioDTO {
+
     @EmbeddedId
     private Telefono_UsuarioPK telefono_usuarioPK;
+    
     public Telefono_UsuarioDTO() {
     }
     public Telefono_UsuarioDTO(Telefono_UsuarioPK telefono_usuarioPK) {
@@ -44,8 +40,13 @@ public class Telefono_UsuarioDTO {
 
     @Override
     public String toString() {
-        return "Telefono_UsuarioDTO{" +
-                "telefono_usuarioPK=" + telefono_usuarioPK +
-                '}';
+        String response = "Telefono_UsuarioDTO{";
+        if(telefono_usuarioPK != null){
+            response.concat("telefono_usuarioPK=" + telefono_usuarioPK.toString());
+        }else{
+            response.concat("telefono_usuarioPK=null");
+        }
+        response.concat("}");
+        return  response;
     }
 }

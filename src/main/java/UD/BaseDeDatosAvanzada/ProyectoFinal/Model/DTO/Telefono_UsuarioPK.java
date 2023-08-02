@@ -1,27 +1,24 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
-/**
- * @Embeddable Clase que define los atributos para el objeto Telefono_UsuarioPK.
- * @Column indica que el atributo es un campo de la tabla
- * @ManyToOne indica la relación muchos a uno
- * @JoinColumn indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
- * @JsonBackReference indica que la clase es una relación muchos a uno
- * Clase que representa la llave primaria de la tabla Telefono_Usuario de la base de datos.
- */
+
 @Embeddable
 public class Telefono_UsuarioPK implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Column(name = "telefono")
-    private long telefono;
+
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = UsuarioDTO.class)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @JsonBackReference
+    @JsonIgnoreProperties("telefonos")
     private UsuarioDTO usuario;
+
+    @Column(name = "telefono")
+    private long telefono;
     public Telefono_UsuarioPK() {
     }
     public Telefono_UsuarioPK(long telefono, UsuarioDTO usuario) {

@@ -1,6 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.RegistroINF;
+
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.UsarINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsarDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsarPK;

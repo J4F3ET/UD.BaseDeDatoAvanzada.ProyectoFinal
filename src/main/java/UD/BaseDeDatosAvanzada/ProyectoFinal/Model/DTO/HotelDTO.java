@@ -9,23 +9,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
-/**
- * @Entity Indica que la clase es una entidad
- * @Table Indica la tabla que representa esta entidad en la base de datos
- * @Column Indica el nombre de la columna en la tabla
- * @Id Indica que el atributo es una clave primaria
- * @ManyToOne Indica la relación muchos a uno
- * @JoinColumn Indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
- * @OneToMany Indica la relación uno a muchos
- * @MappedBy Indica el nombre del atributo que hace referencia a la clave primaria de la tabla referenciada
- * @Fetch Indica el tipo de carga de datos
- * @Inherited Indica que la anotación puede ser heredada
- * Clase que representa la tabla Hotel de la base de datos.
- */
+
 @Entity
 @Table(name = "hotel")
 public class HotelDTO {
     @Id
+    @Column(name = "rnt_hotel")
     private int rnt_hotel;
     @Column(length = 150)
     private String nombre;
@@ -44,7 +33,9 @@ public class HotelDTO {
     @JsonManagedReference
     private Collection<HabitacionDTO> habitaciones = new ArrayList<>();
     @Transient
-    private int antiguedad;
+    private LocalDate currentDate = LocalDate.now();
+    @Transient
+    private int antiguedad = currentDate.getYear() - anio_inauguracion;
     public HotelDTO() {
     }
 
@@ -53,7 +44,6 @@ public class HotelDTO {
         this.nombre = nombre;
         this.direccion = direccion;
         this.anio_inauguracion = anio_inauguracion;
-        this.categoria = categoria;
         this.fecha_actualizacion = fecha_actualizacion;
         this.telefonos = telefonos;
         this.habitaciones = habitaciones;

@@ -10,20 +10,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "habitacion")
 public class HabitacionDTO {
-    /**
-     * @Entity Indica que la clase es una entidad
-     * @Table Indica la tabla que representa esta entidad en la base de datos
-     * @Column Indica el nombre de la columna en la tabla
-     * @EmbeddedId Indica que la clase es una clave primaria compuesta
-     * @ManyToOne Indica la relación muchos a uno
-     * @JoinColumn Indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
-     * @OneToMany Indica la relación uno a muchos
-     * @MappedBy Indica el nombre del atributo que hace referencia a la clave primaria de la tabla referenciada
-     * @Fetch Indica el tipo de carga de datos
-     * @Target Indica el tipo de clase que puede ser anotada con esta anotación
-     * @Inherited Indica que la anotación puede ser heredada
-     * Clase que representa la tabla habitacion de la base de datos
-     */
+
     @EmbeddedId
     private HabitacionPK habitacionPK;
     @Column
