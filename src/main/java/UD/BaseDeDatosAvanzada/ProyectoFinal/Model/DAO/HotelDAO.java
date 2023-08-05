@@ -26,7 +26,7 @@ public class HotelDAO {
         return hotelINF.findById(id);
     }
     public Iterable<HotelDTO> findAll(int pageNumber){
-        int pageSize = 20;
+        int pageSize = 10;
         Sort sort = Sort.by(Sort.Direction.ASC, "id");
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         Page<HotelDTO> page = hotelINF.findAll(pageable);

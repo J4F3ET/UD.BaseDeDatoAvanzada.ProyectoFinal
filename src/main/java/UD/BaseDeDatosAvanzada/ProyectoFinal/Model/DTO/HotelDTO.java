@@ -15,7 +15,7 @@ import java.util.Objects;
 public class HotelDTO {
     @Id
     @Column(name = "rnt_hotel")
-    private int rnt_hotel;
+    private int id;
     @Column(length = 150)
     private String nombre;
     @Column(length = 150)
@@ -40,7 +40,7 @@ public class HotelDTO {
     }
 
     public HotelDTO(int rnt_hotel, String nombre, String direccion, short anio_inauguracion, float categoria, Timestamp fecha_actualizacion, Collection<Hotel_TelefonoDTO> telefonos, Collection<HabitacionDTO> habitaciones, int antiguedad) {
-        this.rnt_hotel = rnt_hotel;
+        this.id = rnt_hotel;
         this.nombre = nombre;
         this.direccion = direccion;
         this.anio_inauguracion = anio_inauguracion;
@@ -53,7 +53,7 @@ public class HotelDTO {
     @Override
     public String toString() {
         return "HotelDTO{" +
-                "rnt_hotel=" + rnt_hotel +
+                "rnt_hotel=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", anio_inauguracion=" + anio_inauguracion +
@@ -70,20 +70,20 @@ public class HotelDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HotelDTO hotelDTO = (HotelDTO) o;
-        return rnt_hotel == hotelDTO.rnt_hotel && anio_inauguracion == hotelDTO.anio_inauguracion && Float.compare(hotelDTO.categoria, categoria) == 0 && antiguedad == hotelDTO.antiguedad && Objects.equals(nombre, hotelDTO.nombre) && Objects.equals(direccion, hotelDTO.direccion) && Objects.equals(fecha_actualizacion, hotelDTO.fecha_actualizacion) && Objects.equals(telefonos, hotelDTO.telefonos) && Objects.equals(habitaciones, hotelDTO.habitaciones);
+        return id == hotelDTO.id && anio_inauguracion == hotelDTO.anio_inauguracion && Float.compare(hotelDTO.categoria, categoria) == 0 && antiguedad == hotelDTO.antiguedad && Objects.equals(nombre, hotelDTO.nombre) && Objects.equals(direccion, hotelDTO.direccion) && Objects.equals(fecha_actualizacion, hotelDTO.fecha_actualizacion) && Objects.equals(telefonos, hotelDTO.telefonos) && Objects.equals(habitaciones, hotelDTO.habitaciones);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rnt_hotel, nombre, direccion, anio_inauguracion, categoria, fecha_actualizacion, telefonos, habitaciones, antiguedad);
+        return Objects.hash(id, nombre, direccion, anio_inauguracion, categoria, fecha_actualizacion, telefonos, habitaciones, antiguedad);
     }
 
-    public int getRnt_hotel() {
-        return rnt_hotel;
+    public int getId() {
+        return id;
     }
 
     public void setRnt_hotel(int rnt_hotel) {
-        this.rnt_hotel = rnt_hotel;
+        this.id = rnt_hotel;
     }
 
     public String getNombre() {
