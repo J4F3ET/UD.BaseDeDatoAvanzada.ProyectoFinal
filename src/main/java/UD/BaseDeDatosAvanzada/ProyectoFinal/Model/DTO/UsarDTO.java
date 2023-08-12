@@ -25,8 +25,10 @@ public class UsarDTO {
 
     @Override
     public String toString() {
-        return "UsarDTO{" +
-                "id=" + id +
+        return """
+                UsarDTO{\
+                id=\
+                """ + id +
                 '}';
     }
 

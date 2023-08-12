@@ -53,8 +53,10 @@ public class Telefono_UsuarioPK implements Serializable {
 
     @Override
     public String toString() {
-        return "Telefono_UsuarioPK{" +
-                "telefono=" + telefono +
+        return """
+                Telefono_UsuarioPK{\
+                telefono=\
+                """ + telefono +
                 ", usuario=" + usuario +
                 '}';
     }

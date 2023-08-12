@@ -110,8 +110,10 @@ public class RegistroDTO {
     }
     @Override
     public String toString() {
-        return "RegistroDTO{" +
-                "id_registro=" + id_registro +
+        return """
+                RegistroDTO{\
+                id_registro=\
+                """ + id_registro +
                 ", nombre='" + nombre + '\'' +
                 ", edad=" + edad +
                 ", mascota=" + mascota +
@@ -122,8 +124,7 @@ public class RegistroDTO {
     }
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof RegistroDTO) {
-            RegistroDTO tmpObj = (RegistroDTO) obj;
+        if (obj instanceof RegistroDTO tmpObj) {
             if (this.id_registro == tmpObj.getId_registro()) {
                 return true;
             }

@@ -25,8 +25,10 @@ public class Hotel_TelefonoDTO {
 
     @Override
     public String toString() {
-        return "Hotel_TelefonoDTO{" +
-                "hotel_telefonoPK=" + hotel_telefonoPK +
+        return """
+                Hotel_TelefonoDTO{\
+                hotel_telefonoPK=\
+                """ + hotel_telefonoPK +
                 '}';
     }
 }

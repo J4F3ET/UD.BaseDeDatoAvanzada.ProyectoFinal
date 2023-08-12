@@ -60,8 +60,10 @@ public class ResponsablePK implements Serializable {
 
     @Override
     public String toString() {
-        return "ResponsablePK{" +
-                "identificacion=" + identificacion +
+        return """
+                ResponsablePK{\
+                identificacion=\
+                """ + identificacion +
                 ", usuario=" + usuario +
                 '}';
     }

@@ -77,8 +77,10 @@ public class PagoDTO {
 
     @Override
     public String toString() {
-        return "PagoDTO{" +
-                "id=" + id +
+        return """
+                PagoDTO{\
+                id=\
+                """ + id +
                 ", pagototal=" + pagototal +
                 ", fecha=" + fecha +
                 ", valor=" + valor +

@@ -32,11 +32,25 @@ public class HotelDAO {
         Page<HotelDTO> page = hotelINF.findAll(pageable);
         return new ArrayList<>(page.getContent());
     }
-    public Iterable<HotelDTO>findByCategoria(int pageNumber,double categoria){
-        int pageSize = 20;
+    public Iterable<HotelDTO>findByCity(int pageNumber,int id_municipio){
+        int pageSize = 10;
+        Sort sort = Sort.by(Sort.Direction.ASC, "id");
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        Page<HotelDTO> page = hotelINF.findByCity(id_municipio,pageable);
+        return page.getContent();
+    }
+    public Iterable<HotelDTO>findByCategoria(int pageNumber,int categoria){
+        int pageSize = 10;
         Sort sort = Sort.by(Sort.Direction.ASC, "categoria");
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         Page<HotelDTO> page = hotelINF.findByCategoria(categoria,pageable);
+        return page.getContent();
+    }
+    public Iterable<HotelDTO>findByDoubleFilter(int pageNumber,int id_municipio,int categoria){
+        int pageSize = 10;
+        Sort sort = Sort.by(Sort.Direction.ASC, "categoria");
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        Page<HotelDTO> page = hotelINF.findByDoubleFilter(id_municipio,categoria,pageable);
         return page.getContent();
     }
     public HotelDTO update(int id,HotelDTO hotelDTO){

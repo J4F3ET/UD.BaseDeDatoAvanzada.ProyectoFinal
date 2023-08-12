@@ -53,8 +53,10 @@ public class AgenciaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "AgenciaPK{" +
-                "rnt=" + rnt +
+        return """
+                AgenciaPK{\
+                rnt=\
+                """ + rnt +
                 ", usuario=" + usuario.toString() +
                 '}';
     }

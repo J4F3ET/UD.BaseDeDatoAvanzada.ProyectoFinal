@@ -66,8 +66,10 @@ public class HabitacionPK implements Serializable{
 
     @Override
     public String toString() {
-        return "HabitacionPK{" +
-                "numero_habitacion=" + numero_habitacion +
+        return """
+                HabitacionPK{\
+                numero_habitacion=\
+                """ + numero_habitacion +
                 ", piso=" + piso +
                 ", hotelDTO=" + hotelDTO +
                 '}';

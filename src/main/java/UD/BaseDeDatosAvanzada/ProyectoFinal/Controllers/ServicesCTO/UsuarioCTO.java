@@ -12,12 +12,12 @@ public class UsuarioCTO {
     private UsuarioDAO usuarioDAO;
 
     @GetMapping("/listar{pageNumber}")
-    public ArrayList<UsuarioDTO>listar(@RequestParam("pageNumber") int pageNumber){
+    public ArrayList<UsuarioDTO>listar(@RequestParam int pageNumber){
         return (ArrayList<UsuarioDTO>) this.usuarioDAO.findAll(pageNumber);
     }
 
     @GetMapping("/buscar/{id}")
-    public UsuarioDTO buscar(@PathVariable("id") Long id){
+    public UsuarioDTO buscar(@PathVariable Long id){
         return usuarioDAO.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class UsuarioCTO {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public void eliminar(@PathVariable("id") Long id){
+    public void eliminar(@PathVariable Long id){
         usuarioDAO.deleteById(id);
     }
 }

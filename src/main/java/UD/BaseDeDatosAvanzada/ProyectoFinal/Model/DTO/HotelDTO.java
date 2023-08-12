@@ -1,5 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -26,6 +27,10 @@ public class HotelDTO {
     private float categoria;
     @Column
     private Timestamp fecha_actualizacion;
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = MunicipioDTO.class)
+    @JoinColumn(name = "id_municipio", referencedColumnName = "id_municipio")
+    @JsonBackReference
+    private MunicipioDTO municipio;
     @OneToMany(mappedBy = "hotel_telefonoPK.hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Collection<Hotel_TelefonoDTO> telefonos = new ArrayList<Hotel_TelefonoDTO>();
@@ -47,13 +52,15 @@ public class HotelDTO {
         this.fecha_actualizacion = fecha_actualizacion;
         this.telefonos = telefonos;
         this.habitaciones = habitaciones;
-        this.antiguedad = antiguedad;
+        this.antiguedad = currentDate.getYear() - anio_inauguracion;
     }
 
     @Override
     public String toString() {
-        return "HotelDTO{" +
-                "rnt_hotel=" + id +
+        return """
+                HotelDTO{\
+                rnt_hotel=\
+                """ + id +
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", anio_inauguracion=" + anio_inauguracion +

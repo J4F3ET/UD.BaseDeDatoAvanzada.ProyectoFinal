@@ -11,7 +11,9 @@ import java.util.Optional;
 public class MunicipioDAO {
     @Autowired
     private MunicipioINF municipioINF;
-
+    public Iterable<MunicipioDTO> findAll(){
+        return municipioINF.findAll();
+    }
     public Optional<MunicipioDTO> findById(Long id){
         return  municipioINF.findById(id);
     }

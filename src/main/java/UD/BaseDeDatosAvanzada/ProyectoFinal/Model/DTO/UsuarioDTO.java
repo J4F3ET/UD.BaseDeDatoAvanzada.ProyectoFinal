@@ -96,8 +96,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
         @Override
         public boolean equals(Object obj) {
-            if (obj instanceof UsuarioDTO) {
-                UsuarioDTO tmpPersona = (UsuarioDTO) obj;
+            if (obj instanceof UsuarioDTO tmpPersona) {
                 if (this.id == tmpPersona.id) {
                     return true;
                 } else {
@@ -110,8 +109,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
         @Override
         public String toString() {
-            return "UsuarioDTO{" +
-                    "id=" + id +
+            return """
+                    UsuarioDTO{\
+                    id=\
+                    """ + id +
                     ", nombre='" + nombre + '\'' +
                     ", correo='" + correo + '\'' +
                     ", password='" + password + '\'' +

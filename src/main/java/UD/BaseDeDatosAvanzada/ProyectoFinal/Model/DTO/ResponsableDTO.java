@@ -63,8 +63,10 @@ public class ResponsableDTO {
 
     @Override
     public String toString() {
-        return "ResponsableDTO{" +
-                "id=" + id +
+        return """
+                ResponsableDTO{\
+                id=\
+                """ + id +
                 ", categoria=" + categoria +
                 ", reservas=" + reservas +
                 '}';

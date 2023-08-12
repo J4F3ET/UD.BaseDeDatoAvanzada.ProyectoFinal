@@ -47,8 +47,10 @@ public class UsarPK implements Serializable{
 
     @Override
     public String toString() {
-        return "UsarPK{" +
-                "servicioDTO=" + servicioDTO +
+        return """
+                UsarPK{\
+                servicioDTO=\
+                """ + servicioDTO +
                 ", reservaDTO=" + reservaDTO +
                 '}';
     }

@@ -49,8 +49,10 @@ public class Hotel_TelefonoPK implements Serializable {
 
     @Override
     public String toString() {
-        return "Hotel_TelefonoPK{" +
-                "telefono=" + telefono +
+        return """
+                Hotel_TelefonoPK{\
+                telefono=\
+                """ + telefono +
                 ", hotelDTO=" + hotelDTO +
                 '}';
     }

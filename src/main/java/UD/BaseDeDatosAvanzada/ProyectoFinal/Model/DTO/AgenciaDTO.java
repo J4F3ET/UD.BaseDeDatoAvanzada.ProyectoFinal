@@ -54,8 +54,10 @@ public class AgenciaDTO {
 
     @Override
     public String toString() {
-        return "AgenciaDTO{" +
-                "id=" + id +
+        return """
+                AgenciaDTO{\
+                id=\
+                """ + id +
                 ", nombre_agencia='" + nombre_agencia + '\'' +
                 ", municipio=" + municipio +
                 ", reservas=" + reservas.toString() +

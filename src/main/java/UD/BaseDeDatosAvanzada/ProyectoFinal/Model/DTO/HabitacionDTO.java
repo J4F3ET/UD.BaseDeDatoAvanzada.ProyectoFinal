@@ -70,8 +70,10 @@ public class HabitacionDTO {
 
     @Override
     public String toString() {
-        return "HabitacionDTO{" +
-                "habitacionPK=" + habitacionPK +
+        return """
+                HabitacionDTO{\
+                habitacionPK=\
+                """ + habitacionPK +
                 ", max_huesped=" + max_huesped +
                 ", registros=" + registros +
                 ", reserva=" + reserva +
