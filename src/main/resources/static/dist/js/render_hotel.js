@@ -1,5 +1,12 @@
 var containerPage = document.querySelector(".containerPage");
 var pageNumber = 0;
+var municipioSelectFiltro = parseInt(
+	document.querySelector("#municipioSelectFiltro").value
+);
+var categoriaSelectFiltro = parseInt(
+	document.querySelector("#selectCategoriaFiltro").value
+);
+var configFilter = "None";
 nextPage();
 loadMunicipios();
 buttonsPages();
@@ -12,14 +19,11 @@ function loadMunicipios() {
 	})
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data);
-			const municipioSelect = document.querySelector("#municipioSelectFiltro");
-			console.log(municipioSelect);
 			data.forEach((municipio) => {
 				let option = document.createElement("option");
 				option.value = municipio.id;
 				option.text = municipio.nombre;
-				municipioSelect.appendChild(option);
+				document.querySelector("#municipioSelectFiltro").appendChild(option);
 			});
 		})
 		.catch((error) => {
@@ -34,6 +38,21 @@ function btnPage(boton) {
 	boton.classList.remove("btn-outline-primary");
 	boton.classList.add("btn-primary");
 	boton.classList.add("btnActivePage");
+}
+function btnGroupPageReset() {
+	let page1 = "btn-outline-primary";
+	let page2 = "btn-outline-primary";
+	pageNumber == 0
+		? (page1 = "btnActivePage btn-primary")
+		: (page2 = "btnActivePage btn-primary");
+	document.querySelector("#groupButtonControlPage").innerHTML = `
+            <button type="button" class="buttonPage btn ${page1}">1</button>
+            <button type="button" class="buttonPage btn ${page2}">2</button>
+            <button type="button" class="buttonPage btn btn-outline-primary">3</button>
+            <button type="button" class="buttonPage btn btn-outline-primary">4</button>
+            <button type="button" class="buttonPage btn btn-outline-primary">5</button>
+        `;
+	buttonsPages();
 }
 function btnGroupPage() {
 	document.querySelector("#groupButtonControlPage").innerHTML = `
@@ -85,12 +104,15 @@ function createRow(data, i) {
 	containerPage.innerHTML += containerRow;
 }
 function nextPage() {
-	fetch(`/hotel/findAll/public?pageNumber=${pageNumber}`, {
-		method: "GET",
-		headers: {
-			"Content-Type": "application/json",
-		},
-	})
+	fetch(
+		`/hotel/findAll/public?pageNumber=${pageNumber}&filter=${configFilter}&value=${municipioSelectFiltro}&value2=${categoriaSelectFiltro}`,
+		{
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		}
+	)
 		.then((response) => response.json())
 		.then((data) => {
 			containerPage.innerHTML = "";
@@ -111,9 +133,38 @@ function buttonsPages() {
 			pageNumber = parseInt(boton.innerHTML) - 1;
 			if (pageNumber + 1 >= 3) {
 				btnGroupPage();
+			} else {
+				btnGroupPageReset();
 			}
 			nextPage();
 			document.querySelector("#initA").click();
 		})
 	);
 }
+function updateConfigFilter() {
+	municipioSelectFiltro = parseInt(
+		document.querySelector("#municipioSelectFiltro").value
+	);
+	categoriaSelectFiltro = parseInt(
+		document.querySelector("#selectCategoriaFiltro").value
+	);
+}
+document.querySelectorAll(".selectFilter").forEach((select) => {
+	select.addEventListener("change", (event) => {
+		updateConfigFilter();
+		if (municipioSelectFiltro == 0 && categoriaSelectFiltro == 0) {
+			configFilter = "None";
+		}
+		if (municipioSelectFiltro != 0 && categoriaSelectFiltro != 0) {
+			configFilter = "Both";
+		}
+		if (municipioSelectFiltro == 0 && categoriaSelectFiltro != 0) {
+			configFilter = "Category";
+		}
+		if (municipioSelectFiltro != 0 && categoriaSelectFiltro == 0) {
+			configFilter = "City";
+		}
+		pageNumber = 0;
+		nextPage();
+	});
+});

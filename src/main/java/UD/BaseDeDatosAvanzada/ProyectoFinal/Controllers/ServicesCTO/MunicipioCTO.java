@@ -14,13 +14,11 @@ public class MunicipioCTO {
     private MunicipioDAO respository;
     @GetMapping("/findAll/public")
     public Iterable<MunicipioDTO> findAll(){
-        System.out.println("Municipios");
         Iterable <MunicipioDTO> municipios = respository.findAll();
         municipios.forEach(municipioDTO -> {
             municipioDTO.setAgencias(null);
             municipioDTO.setHoteles(null);
         });
-        System.out.println("Municipios return");
         return municipios;
     }
 

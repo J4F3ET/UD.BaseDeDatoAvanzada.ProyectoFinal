@@ -41,8 +41,7 @@ public class HotelDAO {
     }
     public Iterable<HotelDTO>findByCategoria(int pageNumber,int categoria){
         int pageSize = 10;
-        Sort sort = Sort.by(Sort.Direction.ASC, "categoria");
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<HotelDTO> page = hotelINF.findByCategoria(categoria,pageable);
         return page.getContent();
     }

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 public interface HotelINF extends JpaRepository<HotelDTO,Integer> {
-    @Query(value = "SELECT * FROM hotel WHERE categoria <= CAST(:categoria AS real)",nativeQuery = true)
+    @Query(value = "SELECT * FROM hotel WHERE categoria = CAST(:categoria AS real)",nativeQuery = true)
     Page<HotelDTO> findByCategoria(@Param("categoria") double categoria, Pageable pageable);
     @Query(value = "SELECT * FROM hotel WHERE id_municipio = :id_municipio",nativeQuery = true)
     Page<HotelDTO> findByCity(@Param("id_municipio") int id_municipio, Pageable pageable);
