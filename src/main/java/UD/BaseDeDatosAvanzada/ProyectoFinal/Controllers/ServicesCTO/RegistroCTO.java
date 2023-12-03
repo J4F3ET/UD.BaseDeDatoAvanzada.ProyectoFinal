@@ -1,7 +1,4 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers.ServicesCTO;
-
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.HabitacionINF;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.ReservaINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.HabitacionDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.RegistroDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.ReservaDAO;

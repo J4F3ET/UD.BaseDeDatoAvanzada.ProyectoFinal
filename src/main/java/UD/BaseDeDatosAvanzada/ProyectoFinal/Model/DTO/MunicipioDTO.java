@@ -29,6 +29,10 @@ public class MunicipioDTO {
     @JsonManagedReference
     private Collection<AgenciaDTO> agencias = new ArrayList<>();
 
+    @OneToMany(mappedBy = "municipio", fetch = FetchType.LAZY, targetEntity = AgenciaDTO.class)
+    @JsonManagedReference
+    private Collection<HotelDTO> hoteles = new ArrayList<>();
+
     public MunicipioDTO() {
     }
     public MunicipioDTO(short id_municipio, String nombre) {
@@ -47,13 +51,26 @@ public class MunicipioDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    public Collection<AgenciaDTO> getAgencias() {
+        return agencias;
+    }
+    public void setAgencias(Collection<AgenciaDTO> agencias) {
+        this.agencias = agencias;
+    }
+    public Collection<HotelDTO> getHoteles() {
+        return hoteles;
+    }
+    public void setHoteles(Collection<HotelDTO> hoteles) {
+        this.hoteles = hoteles;
+    }
 
     @Override
     public String toString() {
-        return "MunicipioDTO{" +
-                "id_municipio=" + id_municipio +
+        return """
+                MunicipioDTO{\
+                id_municipio=\
+                """ + id_municipio +
                 ", nombre='" + nombre + '\'' +
-                ", agencias=" + agencias +
                 '}';
     }
 }

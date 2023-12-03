@@ -3,7 +3,7 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.ServicioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.ServicioINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.ServicioINF;
 
 import java.util.Optional;
 

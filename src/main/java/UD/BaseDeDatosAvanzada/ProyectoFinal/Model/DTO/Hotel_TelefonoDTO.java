@@ -1,12 +1,7 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
 import jakarta.persistence.*;
-/**
- * @Entity Clase que define los atributos para el objeto Hotel_TelefonoDTO.
- * @Table indica que la clase es una entidad y que se mapea a una tabla de base de datos
- * @EmbeddedId indica que la clase es una clave primaria compuesta
- * Clase que define los atributos para el objeto Hotel_TelefonoDTO.
- */
+
 @Entity
 @Table(name = "hotel_telefono")
 public class Hotel_TelefonoDTO {
@@ -30,8 +25,10 @@ public class Hotel_TelefonoDTO {
 
     @Override
     public String toString() {
-        return "Hotel_TelefonoDTO{" +
-                "hotel_telefonoPK=" + hotel_telefonoPK +
+        return """
+                Hotel_TelefonoDTO{\
+                hotel_telefonoPK=\
+                """ + hotel_telefonoPK +
                 '}';
     }
 }

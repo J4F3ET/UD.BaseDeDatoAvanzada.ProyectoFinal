@@ -55,8 +55,10 @@ public class PagoPK implements Serializable {
 
     @Override
     public String toString() {
-        return "PagoPK{" +
-                "id=" + id +
+        return """
+                PagoPK{\
+                id=\
+                """ + id +
                 ", reservaDTO=" + reservaDTO +
                 '}';
     }

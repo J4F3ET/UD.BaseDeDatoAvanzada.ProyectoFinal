@@ -1,5 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -9,24 +10,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
-/**
- * @Entity Indica que la clase es una entidad
- * @Table Indica la tabla que representa esta entidad en la base de datos
- * @Column Indica el nombre de la columna en la tabla
- * @Id Indica que el atributo es una clave primaria
- * @ManyToOne Indica la relación muchos a uno
- * @JoinColumn Indica el nombre de la columna que hace referencia a la clave primaria de la tabla referenciada
- * @OneToMany Indica la relación uno a muchos
- * @MappedBy Indica el nombre del atributo que hace referencia a la clave primaria de la tabla referenciada
- * @Fetch Indica el tipo de carga de datos
- * @Inherited Indica que la anotación puede ser heredada
- * Clase que representa la tabla Hotel de la base de datos.
- */
+
 @Entity
 @Table(name = "hotel")
 public class HotelDTO {
     @Id
-    private int rnt_hotel;
+    @Column(name = "rnt_hotel")
+    private int id;
     @Column(length = 150)
     private String nombre;
     @Column(length = 150)
@@ -37,6 +27,10 @@ public class HotelDTO {
     private float categoria;
     @Column
     private Timestamp fecha_actualizacion;
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = MunicipioDTO.class)
+    @JoinColumn(name = "id_municipio", referencedColumnName = "id_municipio")
+    @JsonBackReference
+    private MunicipioDTO municipio;
     @OneToMany(mappedBy = "hotel_telefonoPK.hotelDTO",cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Collection<Hotel_TelefonoDTO> telefonos = new ArrayList<Hotel_TelefonoDTO>();
@@ -44,26 +38,29 @@ public class HotelDTO {
     @JsonManagedReference
     private Collection<HabitacionDTO> habitaciones = new ArrayList<>();
     @Transient
-    private int antiguedad;
+    private LocalDate currentDate = LocalDate.now();
+    @Transient
+    private int antiguedad = currentDate.getYear() - anio_inauguracion;
     public HotelDTO() {
     }
 
     public HotelDTO(int rnt_hotel, String nombre, String direccion, short anio_inauguracion, float categoria, Timestamp fecha_actualizacion, Collection<Hotel_TelefonoDTO> telefonos, Collection<HabitacionDTO> habitaciones, int antiguedad) {
-        this.rnt_hotel = rnt_hotel;
+        this.id = rnt_hotel;
         this.nombre = nombre;
         this.direccion = direccion;
         this.anio_inauguracion = anio_inauguracion;
-        this.categoria = categoria;
         this.fecha_actualizacion = fecha_actualizacion;
         this.telefonos = telefonos;
         this.habitaciones = habitaciones;
-        this.antiguedad = antiguedad;
+        this.antiguedad = currentDate.getYear() - anio_inauguracion;
     }
 
     @Override
     public String toString() {
-        return "HotelDTO{" +
-                "rnt_hotel=" + rnt_hotel +
+        return """
+                HotelDTO{\
+                rnt_hotel=\
+                """ + id +
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", anio_inauguracion=" + anio_inauguracion +
@@ -80,20 +77,20 @@ public class HotelDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HotelDTO hotelDTO = (HotelDTO) o;
-        return rnt_hotel == hotelDTO.rnt_hotel && anio_inauguracion == hotelDTO.anio_inauguracion && Float.compare(hotelDTO.categoria, categoria) == 0 && antiguedad == hotelDTO.antiguedad && Objects.equals(nombre, hotelDTO.nombre) && Objects.equals(direccion, hotelDTO.direccion) && Objects.equals(fecha_actualizacion, hotelDTO.fecha_actualizacion) && Objects.equals(telefonos, hotelDTO.telefonos) && Objects.equals(habitaciones, hotelDTO.habitaciones);
+        return id == hotelDTO.id && anio_inauguracion == hotelDTO.anio_inauguracion && Float.compare(hotelDTO.categoria, categoria) == 0 && antiguedad == hotelDTO.antiguedad && Objects.equals(nombre, hotelDTO.nombre) && Objects.equals(direccion, hotelDTO.direccion) && Objects.equals(fecha_actualizacion, hotelDTO.fecha_actualizacion) && Objects.equals(telefonos, hotelDTO.telefonos) && Objects.equals(habitaciones, hotelDTO.habitaciones);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rnt_hotel, nombre, direccion, anio_inauguracion, categoria, fecha_actualizacion, telefonos, habitaciones, antiguedad);
+        return Objects.hash(id, nombre, direccion, anio_inauguracion, categoria, fecha_actualizacion, telefonos, habitaciones, antiguedad);
     }
 
-    public int getRnt_hotel() {
-        return rnt_hotel;
+    public int getId() {
+        return id;
     }
 
     public void setRnt_hotel(int rnt_hotel) {
-        this.rnt_hotel = rnt_hotel;
+        this.id = rnt_hotel;
     }
 
     public String getNombre() {

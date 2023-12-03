@@ -50,8 +50,10 @@ public class ServicioDTO {
 
     @Override
     public String toString() {
-        return "ServicioDTO{" +
-                "id_servicio=" + id_servicio +
+        return """
+                ServicioDTO{\
+                id_servicio=\
+                """ + id_servicio +
                 ", nombre='" + nombre + '\'' +
                 ", costo=" + costo +
                 '}';

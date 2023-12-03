@@ -1,11 +1,13 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.Telefono_UsuarioINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Telefono_UsuarioINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioPK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -15,7 +17,9 @@ public class Telefono_UsuarioDAO {
     public void deleteById(Telefono_UsuarioPK id){
         telefono_usuarioINF.deleteById(id);
     }
-
+    public Collection<Telefono_UsuarioDTO> findByUser(Long id_usuario){
+        return telefono_usuarioINF.getTelefonosByUsuario(id_usuario);
+    };
     public void updateById(Telefono_UsuarioPK telefono_usuarioPK,Telefono_UsuarioPK nuevoTelefono_usuarioPK){
         telefono_usuarioINF.deleteById(telefono_usuarioPK);
         telefono_usuarioINF.save(new Telefono_UsuarioDTO(nuevoTelefono_usuarioPK));
@@ -28,7 +32,7 @@ public class Telefono_UsuarioDAO {
         return telefono_usuarioINF.findById(id);
     }
     public Telefono_UsuarioDTO saveById(Telefono_UsuarioPK id){
-        Telefono_UsuarioDTO telefono_usuarioDTO = new Telefono_UsuarioDTO(id);
-        return telefono_usuarioINF.save(telefono_usuarioDTO);
+        return telefono_usuarioINF.save(new Telefono_UsuarioDTO(id));
     }
+
 }

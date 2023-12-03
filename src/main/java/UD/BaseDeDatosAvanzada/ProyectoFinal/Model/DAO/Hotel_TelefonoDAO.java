@@ -1,6 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.Hotel_TelefonoINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Hotel_TelefonoINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Hotel_TelefonoDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Hotel_TelefonoPK;
 import org.springframework.beans.factory.annotation.Autowired;

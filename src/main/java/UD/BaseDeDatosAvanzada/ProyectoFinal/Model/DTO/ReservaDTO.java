@@ -181,8 +181,10 @@ public class ReservaDTO {
 
     @Override
     public String toString() {
-        return "ReservaDTO{" +
-                "id_reserva=" + id_reserva +
+        return """
+                ReservaDTO{\
+                id_reserva=\
+                """ + id_reserva +
                 ", fecha_inicio=" + fecha_inicio +
                 ", fecha_final=" + fecha_final +
                 ", fecha_creacion=" + fecha_creacion +

@@ -55,8 +55,10 @@ public class RecibirPK implements Serializable {
 
     @Override
     public String toString() {
-        return "RecibirPK{" +
-                "reserva=" + reserva +
+        return """
+                RecibirPK{\
+                reserva=\
+                """ + reserva +
                 ", habitacion=" + habitacion +
                 '}';
     }

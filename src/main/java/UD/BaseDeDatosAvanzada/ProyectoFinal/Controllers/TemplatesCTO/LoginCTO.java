@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginCTO {
-    @GetMapping({"/","/login"})
+    @GetMapping({"/iniciarSesion","/login"})
     public ModelAndView index() {
         return new ModelAndView("login");
     }

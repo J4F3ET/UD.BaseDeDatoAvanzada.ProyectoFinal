@@ -1,6 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.ResponsableINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.ResponsableINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.ResponsableDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.ResponsablePK;
 import org.springframework.beans.factory.annotation.Autowired;

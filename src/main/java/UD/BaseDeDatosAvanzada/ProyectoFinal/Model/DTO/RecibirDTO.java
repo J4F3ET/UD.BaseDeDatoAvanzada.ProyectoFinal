@@ -42,8 +42,10 @@ public class RecibirDTO {
 
     @Override
     public String toString() {
-        return "RecibirDTO{" +
-                "id=" + id +
+        return """
+                RecibirDTO{\
+                id=\
+                """ + id +
                 '}';
     }
 }
