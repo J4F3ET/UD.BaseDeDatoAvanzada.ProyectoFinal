@@ -1,4 +1,4 @@
-package UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces;
+package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces;
 
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsarDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsarPK;

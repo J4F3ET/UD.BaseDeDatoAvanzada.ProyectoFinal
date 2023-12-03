@@ -1,6 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.HabitacionINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.HabitacionINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.HabitacionDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.HabitacionPK;
 import org.springframework.beans.factory.annotation.Autowired;

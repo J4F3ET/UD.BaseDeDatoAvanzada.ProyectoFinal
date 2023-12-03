@@ -1,6 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.AgenciaDTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.AgenciaINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.AgenciaINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.AgenciaPK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

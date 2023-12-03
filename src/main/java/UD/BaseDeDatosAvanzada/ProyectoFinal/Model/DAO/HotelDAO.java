@@ -1,6 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.HotelINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.HotelINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.HotelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

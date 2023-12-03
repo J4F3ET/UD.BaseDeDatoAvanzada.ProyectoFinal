@@ -1,6 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.PagoINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.PagoINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.PagoDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.PagoPK;
 import org.springframework.beans.factory.annotation.Autowired;

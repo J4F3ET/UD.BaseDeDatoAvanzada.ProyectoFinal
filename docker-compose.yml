@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  database:
+    container_name: tranqui_descanso_database
+    image: postgres:16.1
+    restart: always
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - 5400:5432
+    environment:
+      # Database_host is the direccion of the database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: tranqui_descanso
+  pgAdmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: development@example.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    depends_on:
+      - database
+  app:
+    container_name: api_rest_hotelera
+    image: api_rest_hotelera:1.0
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      PORT: 8080
+      DATABASE_URL: jdbc:postgresql://database:5432/tranqui_descanso
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: root
+    depends_on:
+      - database
+

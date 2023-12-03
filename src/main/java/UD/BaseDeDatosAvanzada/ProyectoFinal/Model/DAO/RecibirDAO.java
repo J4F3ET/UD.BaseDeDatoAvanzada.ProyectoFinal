@@ -1,6 +1,6 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.RecibirINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.RecibirINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.RecibirDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.RecibirPK;
 import org.springframework.beans.factory.annotation.Autowired;

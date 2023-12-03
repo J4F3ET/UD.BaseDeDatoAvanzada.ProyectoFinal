@@ -1,5 +1,5 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.UsuarioINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.UsuarioINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.AgenciaDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.ResponsableDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsuarioDTO;

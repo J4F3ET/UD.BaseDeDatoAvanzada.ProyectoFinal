@@ -1,7 +1,7 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Interfaces.UsarINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.UsarINF;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsarDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsarPK;
 import org.springframework.beans.factory.annotation.Autowired;
