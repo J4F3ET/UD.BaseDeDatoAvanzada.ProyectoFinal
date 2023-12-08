@@ -1,15 +1,130 @@
-var containerPage = document.querySelector(".containerPage");
-var pageNumber = 0;
-var municipioSelectFiltro = parseInt(
-	document.querySelector("#municipioSelectFiltro").value
-);
-var categoriaSelectFiltro = parseInt(
-	document.querySelector("#selectCategoriaFiltro").value
-);
-var configFilter = "None";
 nextPage();
 loadMunicipios();
-buttonsPages();
+//Paginacion
+function findActivePage() {
+	var currentPage = null;
+	document.querySelectorAll(".btnPagination").forEach((element) => {
+		if (element.parentElement.classList.contains("active")) {
+			currentPage = element.parentElement;
+		}
+	});
+	return currentPage;
+}
+function releasePageActive(elementLi) {
+	if (elementLi.nextElementSibling == null) {
+		releasePageBtnNext(elementLi);
+	} else {
+		releasePageBtnPrevious(elementLi);
+	}
+}
+function releasePageBtnPrevious(elementLi) {
+	const minValuePage = parseInt(
+		elementLi.nextElementSibling.querySelector(".btnPagination").innerHTML
+	);
+	const currentPage = findActivePage();
+	if (parseInt(currentPage.querySelector(".btnPagination").innerHTML) > minValuePage) {
+		clearActivePage();
+		currentPage.previousElementSibling.classList.add("active");
+	} else if (
+		parseInt(currentPage.querySelector(".btnPagination").innerHTML) != 1
+	) {
+		document.querySelectorAll(".btnPagination").forEach((element) => {
+			element.innerHTML = parseInt(element.innerHTML) - 1;
+		});
+	}
+}
+function releasePageBtnNext(elementLi) {
+	const maxValuePage = parseInt(
+		elementLi.previousElementSibling.querySelector(".btnPagination").innerHTML
+	);
+	const currentPage = findActivePage();
+	if (
+		parseInt(currentPage.querySelector(".btnPagination").innerHTML) <
+		maxValuePage
+	) {
+		clearActivePage();
+		currentPage.nextElementSibling.classList.add("active");
+	} else {
+		document.querySelectorAll(".btnPagination").forEach((element) => {
+			element.innerHTML = parseInt(element.innerHTML) + 1;
+		});
+	}
+}
+function clearActivePage() {
+	document.querySelectorAll(".page-item").forEach((element) => {
+		element.classList.remove("active");
+	});
+}
+//Rederizar datos
+function createRow(column1, column2) {
+	const divContainerRow = document.createElement("div");
+	divContainerRow.classList.add("containerRow");
+	const divContainerFlex = document.createElement("div");
+	divContainerFlex.classList.add(
+		"d-md-flex",
+		"flex-md-equal",
+		"w-100",
+		"my-md-3",
+		"ps-md-3"
+	);
+	const divContainerItemExternal1 = createItemForRow(column1);
+	divContainerFlex.appendChild(divContainerItemExternal1);
+	if (column2 != null) {
+		const divContainerItemExternal2 = createItemForRow(column2);
+		divContainerFlex.appendChild(divContainerItemExternal2);
+	}
+	divContainerRow.appendChild(divContainerFlex);
+	return divContainerRow;
+}
+function resolveCategory(category) {
+	var starts = "";
+	for (let j = 0; j < parseInt(category); j++) {
+		starts += `★`;
+	}
+	return starts;
+}
+function createItemForRow(data) {
+	const divContainerItemExternal = document.createElement("div");
+	divContainerItemExternal.classList.add(
+		"rounded",
+		"bg-body-tertiary",
+		"w-100",
+		"me-md-3",
+		"pt-3",
+		"px-3",
+		"pt-md-5",
+		"px-md-5",
+		"text-center",
+		"overflow-hidden"
+	);
+	divContainerItemExternal.style.backgroundImage =
+		"url(dist/img/img_background_card.jpg)";
+	const divContainerItemInternal = document.createElement("div");
+	divContainerItemInternal.classList.add("my-3", "p-3");
+	const h2 = document.createElement("h2");
+	h2.classList.add("display-5");
+	h2.innerHTML = data.nombre;
+	const p = document.createElement("p");
+	p.classList.add("lead");
+	p.innerHTML = resolveCategory(data.categoria);
+	const a = document.createElement("a");
+	a.classList.add("text-black");
+	a.href = "#";
+	a.innerHTML = "Ver más";
+	const divContainerImage = document.createElement("div");
+	divContainerImage.classList.add("bg-body", "shadow-sm", "mx-auto");
+	divContainerImage.style.width = "80%";
+	divContainerImage.style.height = "300px";
+	divContainerImage.style.borderRadius = "21px 21px 0 0";
+	divContainerImage.style.backgroundImage = "url(dist/img/habitacion.jpg)";
+	divContainerItemInternal.appendChild(h2);
+	divContainerItemInternal.appendChild(p);
+	divContainerItemInternal.appendChild(a);
+	divContainerItemExternal.appendChild(divContainerItemInternal);
+	divContainerItemExternal.appendChild(divContainerImage);
+	return divContainerItemExternal;
+}
+//Carga de datos
 function loadMunicipios() {
 	fetch("/municipio/findAll/public", {
 		method: "GET",
@@ -21,8 +136,10 @@ function loadMunicipios() {
 		.then((data) => {
 			data.forEach((municipio) => {
 				let option = document.createElement("option");
-				option.value = municipio.id;
-				option.text = municipio.nombre;
+				option.value = municipio.id_municipio;
+				option.text =
+					municipio.nombre.substring(0, 1) +
+					municipio.nombre.substring(1).toLowerCase();
 				document.querySelector("#municipioSelectFiltro").appendChild(option);
 			});
 		})
@@ -30,82 +147,13 @@ function loadMunicipios() {
 			console.error("Error fetching data:", error);
 		});
 }
-function btnPage(boton) {
-	document.querySelector(".btnActivePage").classList.remove("btn-primary");
-	document.querySelector(".btnActivePage").classList.remove("btn-primary");
-	document.querySelector(".btnActivePage").classList.add("btn-outline-primary");
-	document.querySelector(".btnActivePage").classList.remove("btnActivePage");
-	boton.classList.remove("btn-outline-primary");
-	boton.classList.add("btn-primary");
-	boton.classList.add("btnActivePage");
-}
-function btnGroupPageReset() {
-	let page1 = "btn-outline-primary";
-	let page2 = "btn-outline-primary";
-	pageNumber == 0
-		? (page1 = "btnActivePage btn-primary")
-		: (page2 = "btnActivePage btn-primary");
-	document.querySelector("#groupButtonControlPage").innerHTML = `
-            <button type="button" class="buttonPage btn ${page1}">1</button>
-            <button type="button" class="buttonPage btn ${page2}">2</button>
-            <button type="button" class="buttonPage btn btn-outline-primary">3</button>
-            <button type="button" class="buttonPage btn btn-outline-primary">4</button>
-            <button type="button" class="buttonPage btn btn-outline-primary">5</button>
-        `;
-	buttonsPages();
-}
-function btnGroupPage() {
-	document.querySelector("#groupButtonControlPage").innerHTML = `
-            <button type="button" class="buttonPage btn btn-outline-primary">${
-							pageNumber - 1
-						}</button>
-            <button type="button" class="buttonPage btn btn-outline-primary">${pageNumber}</button>
-            <button type="button" class="buttonPage btnActivePage btn btn-primary ">${
-							pageNumber + 1
-						}</button>
-            <button type="button" class="buttonPage btn btn-outline-primary">${
-							pageNumber + 2
-						}</button>
-            <button type="button" class="buttonPage btn btn-outline-primary">${
-							pageNumber + 3
-						}</button>
-        `;
-	buttonsPages();
-}
-function createRow(data, i) {
-	var categoria1 = "";
-	for (let j = 0; j < parseInt(data[i].categoria); j++) {
-		categoria1 += `★`;
-	}
-	var categoria2 = "";
-	for (let j = 0; j < parseInt(data[i + 1].categoria); j++) {
-		categoria2 += `★`;
-	}
-	var containerRow = `<div class="containerRow">
-                    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-                    <div class="rounded bg-body-tertiary w-100 me-md-3 pt-3 px-3 pt-md-5 px-md-5  text-center overflow-hidden" style="background-image: url(dist/img/img_background_card.jpg);">
-                        <div class="my-3 p-3">
-                        <h2 class="display-5">${data[i].nombre}</h2>
-                        <p class="lead">${categoria1}</p>
-                        <a class="text-black" href="#">Ver más</a>
-                        </div>
-                        <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;background-image: url(dist/img/habiatcion.jpg);"></div>
-                    </div>
-                    <div class="rounded bg-body-tertiary w-100 me-md-3 pt-3 px-3 pt-md-5 px-md-5  text-center overflow-hidden" style="background-image: url(dist/img/img_background_card.jpg);">
-                        <div class="my-3 p-3">
-                        <h2 class="display-5">${data[i + 1].nombre}</h2>
-                        <p class="lead">${categoria2}</p>
-                        <a class="text-black" href="#">Ver más</a>
-                        </div>
-                        <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;background-image: url(dist/img/habiatcion.jpg);"></div>
-                    </div>
-                    </div>
-                </div>`;
-	containerPage.innerHTML += containerRow;
-}
-function nextPage() {
+function nextPage(
+	pageNumber = 0,
+	municipioSelectFiltro = 0,
+	categoriaSelectFiltro = 0
+) {
 	fetch(
-		`/hotel/findAll/public?pageNumber=${pageNumber}&filter=${configFilter}&value=${municipioSelectFiltro}&value2=${categoriaSelectFiltro}`,
+		`/hotel/findAll/public?pageNumber=${pageNumber}&id_municipio=${municipioSelectFiltro}&categoria=${categoriaSelectFiltro}`,
 		{
 			method: "GET",
 			headers: {
@@ -115,56 +163,40 @@ function nextPage() {
 	)
 		.then((response) => response.json())
 		.then((data) => {
+			var containerPage = document.querySelector(".containerPage");
 			containerPage.innerHTML = "";
 			for (let i = 0; i < data.length; i += 2) {
-				createRow(data, i);
+				containerPage.appendChild(createRow(data[i], data[i + 1]));
 			}
 		})
 		.catch((error) => {
-			console.error("Error fetching data:", error);
+			console.error("Error fetch data:", error);
 		});
 	pageNumber += 1;
 }
-function buttonsPages() {
-	document.querySelectorAll(".buttonPage").forEach((boton) =>
-		boton.addEventListener("click", (event) => {
-			event.preventDefault();
-			btnPage(boton);
-			pageNumber = parseInt(boton.innerHTML) - 1;
-			if (pageNumber + 1 >= 3) {
-				btnGroupPage();
-			} else {
-				btnGroupPageReset();
-			}
-			nextPage();
-			document.querySelector("#initA").click();
-		})
-	);
-}
-function updateConfigFilter() {
-	municipioSelectFiltro = parseInt(
-		document.querySelector("#municipioSelectFiltro").value
-	);
-	categoriaSelectFiltro = parseInt(
-		document.querySelector("#selectCategoriaFiltro").value
-	);
-}
+// Eventos
+document.querySelectorAll(".page-item").forEach((elementLi) => {
+	elementLi.addEventListener("click", (event) => {
+		if (elementLi.firstElementChild.hasAttribute("aria-label")) {
+			releasePageActive(elementLi);
+			findActivePage().click();
+		} else {
+			clearActivePage();
+			elementLi.classList.add("active");
+			nextPage(
+				parseInt(elementLi.querySelector(".btnPagination").innerHTML) - 1,
+				parseInt(document.querySelector("#municipioSelectFiltro").value),
+				parseInt(document.querySelector("#selectCategoriaFiltro").value)
+			);
+		}
+	});
+});
 document.querySelectorAll(".selectFilter").forEach((select) => {
 	select.addEventListener("change", (event) => {
-		updateConfigFilter();
-		if (municipioSelectFiltro == 0 && categoriaSelectFiltro == 0) {
-			configFilter = "None";
-		}
-		if (municipioSelectFiltro != 0 && categoriaSelectFiltro != 0) {
-			configFilter = "Both";
-		}
-		if (municipioSelectFiltro == 0 && categoriaSelectFiltro != 0) {
-			configFilter = "Category";
-		}
-		if (municipioSelectFiltro != 0 && categoriaSelectFiltro == 0) {
-			configFilter = "City";
-		}
-		pageNumber = 0;
-		nextPage();
+		nextPage(
+			parseInt(findActivePage().querySelector(".btnPagination").innerHTML) - 1,
+			parseInt(document.querySelector("#municipioSelectFiltro").value),
+			parseInt(document.querySelector("#selectCategoriaFiltro").value)
+		);
 	});
 });

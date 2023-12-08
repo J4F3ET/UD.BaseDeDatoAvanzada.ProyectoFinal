@@ -30,3 +30,9 @@ COPY servicio(nombre,costo,id_servicio)
 FROM 'C:\\Users\\jafet\\OneDrive\\Escritorio\\DataSetBaseDeDatosd\\servicio.csv'
 DELIMITER ','
 CSV HEADER;
+
+Habitacion
+Reserva
+Pago
+Usar
+Registro
