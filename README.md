@@ -36,10 +36,32 @@ spring.jpa.hibernate.ddl-auto = update
 - Para ejecutar services `docker-compose up`
 - para ejecutar un solo servicio `docker-compose up <service_name>`
 - para errores de network `docker-compose up --force-recreate --build`
-
+# Orden de subir datos a la base de datos
+1. usuario
+2. telefono_usuario
+3. responsable
+4. municipio
+5. agencia
+6. hotel
+8. hotel_telefono
+9. servicio
+10. habitacion
+11. reserva
+12. pago
+14. usar
+15. registro
 # Arquitetura
 Se esta usando MVC para la arquitectura de la aplicacion
 ## Modelo
+```
+└── 📁Model
+    └── 📁BD
+        └── 📁DTO
+    └── 📁DAO
+    └── 📁Interfaces
+        └── 📁DTO
+        └── 📁Services
+```
 ## Vista
 ```
 └── 📁resources
@@ -57,3 +79,18 @@ Se esta usando MVC para la arquitectura de la aplicacion
         └── login.html
 ```
 ## Controladores
+```
+└── 📁Controllers
+    └── 📁ServicesCTO
+        └── HotelCTO.java
+        └── MunicipioCTO.java
+        └── RegistroCTO.java
+        └── ReservaCTO.java
+        └── Telefono_UsuarioCTO.java
+        └── UsuarioCTO.java
+        └── 📁Util
+            └── TelefonoRequestUser.java
+    └── 📁TemplatesCTO
+        └── IndexCTO.java
+        └── LoginCTO.java
+```
