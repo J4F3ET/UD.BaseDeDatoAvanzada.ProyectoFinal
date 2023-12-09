@@ -33,9 +33,6 @@ public class HotelDAO {
         int pageSize = 10;
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<IHotelPublicDTO> page = hotelINF.findAllHotelProjection(pageable);
-        page.getContent().forEach(hotel -> {
-            System.out.println(hotel.getNombre());
-        });
         return page.getContent();
     }
 

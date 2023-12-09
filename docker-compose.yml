@@ -34,5 +34,7 @@ services:
       DATABASE_URL: jdbc:postgresql://database:5432/tranqui_descanso
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: root
+      SECURITY_USERNAME: admin
+      SECURITY_PASSWORD: admin
     depends_on:
       - database

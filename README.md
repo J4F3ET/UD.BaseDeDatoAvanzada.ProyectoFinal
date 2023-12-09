@@ -15,6 +15,8 @@ spring.datasource.username = ${DATABASE_USERNAME}
 spring.datasource.password = ${DATABASE_PASSWORD}
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.hibernate.ddl-auto = update
+spring.security.user.name = ${SECURITY_USERNAME}
+spring.security.user.password = ${SECURITY_PASSWORD}
 ```
 
 ## Local
@@ -27,6 +29,8 @@ spring.datasource.username = postgres
 spring.datasource.password = root
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.hibernate.ddl-auto = update
+spring.security.user.name = admin
+spring.security.user.password = admin
 ```
 
 # Docker-Compose

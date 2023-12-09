@@ -155,17 +155,27 @@ function clearNameHotel(data) {
 		"S.A.S.",
 		" S.A.S",
 		" S A S",
+		"SAS",
 		"S.A.",
+		" S.A",
 		"S A",
+		"S.O.S",
+		"S.O.S.",
 		"LTDA.",
 		"LTDA",
 		"LIMITADA",
+		"LIMITADA.",
+		"LTDA. S.A.S.",
+		"ORGANIZACION",
 		"REORGANIZACIÓN",
 		"& CIA S.EN C.",
 	];
 	data.forEach((hotel) => {
 		aux.forEach((element) => {
 			hotel.nombre = hotel.nombre.replace(element, "");
+			hotel.nombre = hotel.nombre.replace(element.toLowerCase(), "");
+			hotel.nombre =
+				hotel.nombre.substring(0, 1) + hotel.nombre.substring(1).toLowerCase();
 		});
 	});
 	return data;
