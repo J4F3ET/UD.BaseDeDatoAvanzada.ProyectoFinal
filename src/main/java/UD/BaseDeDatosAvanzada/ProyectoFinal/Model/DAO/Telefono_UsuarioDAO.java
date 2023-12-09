@@ -1,8 +1,9 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Telefono_UsuarioINF;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioDTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.Telefono_UsuarioDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.Telefono_UsuarioPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Services.Telefono_UsuarioINF;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,9 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers.ServicesCTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.RegistroDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.HabitacionDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.RegistroDAO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.ReservaDAO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.RegistroDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,7 +1,8 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.ReservaINF;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.ReservaDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.ReservaDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Services.ReservaINF;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

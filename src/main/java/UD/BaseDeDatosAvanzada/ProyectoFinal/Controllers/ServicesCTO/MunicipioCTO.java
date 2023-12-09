@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.MunicipioDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.MunicipioDAO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.MunicipioDTO;
 @RestController
 @RequestMapping("/municipio")
 public class MunicipioCTO {

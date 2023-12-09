@@ -1,9 +1,10 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.UsarINF;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsarDTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsarPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.UsarDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.UsarPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Services.UsarINF;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

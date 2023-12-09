@@ -22,7 +22,10 @@ function releasePageBtnPrevious(elementLi) {
 		elementLi.nextElementSibling.querySelector(".btnPagination").innerHTML
 	);
 	const currentPage = findActivePage();
-	if (parseInt(currentPage.querySelector(".btnPagination").innerHTML) > minValuePage) {
+	if (
+		parseInt(currentPage.querySelector(".btnPagination").innerHTML) >
+		minValuePage
+	) {
 		clearActivePage();
 		currentPage.previousElementSibling.classList.add("active");
 	} else if (
@@ -147,6 +150,26 @@ function loadMunicipios() {
 			console.error("Error fetching data:", error);
 		});
 }
+function clearNameHotel(data) {
+	const aux = [
+		"S.A.S.",
+		" S.A.S",
+		" S A S",
+		"S.A.",
+		"S A",
+		"LTDA.",
+		"LTDA",
+		"LIMITADA",
+		"REORGANIZACIÓN",
+		"& CIA S.EN C.",
+	];
+	data.forEach((hotel) => {
+		aux.forEach((element) => {
+			hotel.nombre = hotel.nombre.replace(element, "");
+		});
+	});
+	return data;
+}
 function nextPage(
 	pageNumber = 0,
 	municipioSelectFiltro = 0,
@@ -163,6 +186,7 @@ function nextPage(
 	)
 		.then((response) => response.json())
 		.then((data) => {
+			data = clearNameHotel(data);
 			var containerPage = document.querySelector(".containerPage");
 			containerPage.innerHTML = "";
 			for (let i = 0; i < data.length; i += 2) {

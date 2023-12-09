@@ -1,8 +1,4 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers.ServicesCTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioDTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioPK;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsuarioDTO;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -10,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers.ServicesCTO.Util.TelefonoRequestUser;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.Telefono_UsuarioDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.Telefono_UsuarioPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.UsuarioDTO;
 import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO.Telefono_UsuarioDAO;
 
 @RestController

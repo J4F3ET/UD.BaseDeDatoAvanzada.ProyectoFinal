@@ -1,8 +1,9 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.HabitacionINF;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.HabitacionDTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.HabitacionPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.HabitacionDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.HabitacionPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Services.HabitacionINF;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
