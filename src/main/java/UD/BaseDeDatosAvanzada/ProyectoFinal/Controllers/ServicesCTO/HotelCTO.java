@@ -29,27 +29,29 @@ public class HotelCTO {
     /*
      * findAll es una funcion que retorna los hoteles que se encuentran en la base
      * de datos, deacuerdo a los parametros que reciba retorna uno u otros hoteles
+     * 
      * @param pageNumber es el numero de pagina que se desea obtener
+     * 
      * @param id_municipio es el id del municipio en donde quiere el hotel
+     * 
      * @param categoria es la categoria del hotel
      */
     @GetMapping(value = "/findAll/public")
     public Iterable<HotelDTO> findAll(
-        @RequestParam(defaultValue = "0") int pageNumber,
-        @RequestParam(required = false, defaultValue = "0") int id_municipio,
-        @RequestParam(required = false, defaultValue = "0") int categoria
-    ){
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(required = false, defaultValue = "0") int id_municipio,
+            @RequestParam(required = false, defaultValue = "0") int categoria) {
         System.out.println("id_municipio: " + id_municipio);
         System.out.println("categoria: " + categoria);
         System.out.println("pageNumber: " + pageNumber);
         Iterable<HotelDTO> hoteles = null;
-        if(id_municipio == 0 && categoria == 0){
+        if (id_municipio == 0 && categoria == 0) {
             hoteles = this.hotelDAO.findAll(pageNumber);
-        }else if(id_municipio != 0 && categoria == 0){
+        } else if (id_municipio != 0 && categoria == 0) {
             hoteles = this.hotelDAO.findByCity(pageNumber, id_municipio);
-        }else if(id_municipio == 0 && categoria != 0){
+        } else if (id_municipio == 0 && categoria != 0) {
             hoteles = this.hotelDAO.findByCategoria(pageNumber, categoria);
-        }else{
+        } else {
             hoteles = this.hotelDAO.findByDoubleFilter(pageNumber, id_municipio, categoria);
         }
         String[] aux = {
