@@ -1,8 +1,9 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.RecibirINF;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.RecibirDTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.RecibirPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.RecibirDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.RecibirPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Services.RecibirINF;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

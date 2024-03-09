@@ -2,7 +2,7 @@ package UD.BaseDeDatosAvanzada.ProyectoFinal.Controllers.ServicesCTO.Util;
 
 import java.util.Collection;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Telefono_UsuarioDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.Telefono_UsuarioDTO;
 
 public class TelefonoRequestUser {
     private Collection<Telefono_UsuarioDTO> telefonos;

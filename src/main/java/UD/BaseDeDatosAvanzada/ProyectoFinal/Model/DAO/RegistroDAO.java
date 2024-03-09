@@ -1,7 +1,8 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.RegistroINF;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.RegistroDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.RegistroDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Services.RegistroINF;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

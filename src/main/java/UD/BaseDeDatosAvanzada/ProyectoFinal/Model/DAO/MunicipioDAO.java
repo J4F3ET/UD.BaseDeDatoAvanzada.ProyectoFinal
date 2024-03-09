@@ -1,7 +1,7 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.MunicipioINF;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.MunicipioDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Services.MunicipioINF;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.MunicipioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

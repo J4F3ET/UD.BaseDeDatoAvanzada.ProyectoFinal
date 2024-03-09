@@ -1,8 +1,9 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
 
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Hotel_TelefonoINF;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Hotel_TelefonoDTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.Hotel_TelefonoPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.Hotel_TelefonoDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.Hotel_TelefonoPK;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Services.Hotel_TelefonoINF;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

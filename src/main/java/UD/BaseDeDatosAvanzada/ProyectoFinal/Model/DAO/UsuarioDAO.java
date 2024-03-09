@@ -1,8 +1,9 @@
 package UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DAO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.UsuarioINF;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.AgenciaDTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.ResponsableDTO;
-import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.DTO.UsuarioDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.AgenciaDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.ResponsableDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.BD.DTO.UsuarioDTO;
+import UD.BaseDeDatosAvanzada.ProyectoFinal.Model.Interfaces.Services.UsuarioINF;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
